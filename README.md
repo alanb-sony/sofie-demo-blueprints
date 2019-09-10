@@ -2,6 +2,10 @@
 
 This is a reference blueprints package for the [Sofie News Studio Automation System](https://github.com/nrkno/Sofie-TV-automation/).
 
+## How to Use the Spreadsheet Gateway
+
+See the [User Guide](docs/Spreadsheet_User_Guide.md)
+
 ## Features
 
 These blueprints is intended to be used with Spreadsheets based on the template [TODO: LINK](http://spreadsheetsonGoogleDrive)
@@ -25,6 +29,10 @@ yarn dist
 The result dist/*-bundle.js files can be distributed and uploaded in the Sofie UI
 
 TODO - bundle.json is a valid distribution format
+
+## vMix setup
+
+See [vMix](docs/vMix.md)
 
 ## Development
 
