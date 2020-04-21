@@ -81,17 +81,17 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 54);
+/******/ 	return __webpack_require__(__webpack_require__.s = 55);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
+/* 0 */,
+/* 1 */
 /***/ (function(module, exports) {
 
 module.exports = _;
 
 /***/ }),
-/* 1 */,
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -99,26 +99,6 @@ module.exports = _;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = __webpack_require__(4);
-tslib_1.__exportStar(__webpack_require__(6), exports);
-tslib_1.__exportStar(__webpack_require__(7), exports);
-tslib_1.__exportStar(__webpack_require__(8), exports);
-tslib_1.__exportStar(__webpack_require__(9), exports);
-tslib_1.__exportStar(__webpack_require__(10), exports);
-tslib_1.__exportStar(__webpack_require__(11), exports);
-tslib_1.__exportStar(__webpack_require__(12), exports);
-tslib_1.__exportStar(__webpack_require__(13), exports);
-tslib_1.__exportStar(__webpack_require__(26), exports);
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(4);
-tslib_1.__exportStar(__webpack_require__(14), exports);
 tslib_1.__exportStar(__webpack_require__(15), exports);
 tslib_1.__exportStar(__webpack_require__(16), exports);
 tslib_1.__exportStar(__webpack_require__(17), exports);
@@ -129,7 +109,9 @@ tslib_1.__exportStar(__webpack_require__(21), exports);
 tslib_1.__exportStar(__webpack_require__(22), exports);
 tslib_1.__exportStar(__webpack_require__(23), exports);
 tslib_1.__exportStar(__webpack_require__(24), exports);
-const Timeline = __webpack_require__(25);
+tslib_1.__exportStar(__webpack_require__(25), exports);
+tslib_1.__exportStar(__webpack_require__(26), exports);
+const Timeline = __webpack_require__(27);
 exports.Timeline = Timeline;
 var DeviceType;
 (function (DeviceType) {
@@ -146,7 +128,27 @@ var DeviceType;
     DeviceType[DeviceType["HTTPWATCHER"] = 10] = "HTTPWATCHER";
     DeviceType[DeviceType["SISYFOS"] = 11] = "SISYFOS";
     DeviceType[DeviceType["QUANTEL"] = 12] = "QUANTEL";
+    DeviceType[DeviceType["SINGULAR_LIVE"] = 14] = "SINGULAR_LIVE";
 })(DeviceType = exports.DeviceType || (exports.DeviceType = {}));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = __webpack_require__(4);
+tslib_1.__exportStar(__webpack_require__(7), exports);
+tslib_1.__exportStar(__webpack_require__(8), exports);
+tslib_1.__exportStar(__webpack_require__(9), exports);
+tslib_1.__exportStar(__webpack_require__(10), exports);
+tslib_1.__exportStar(__webpack_require__(11), exports);
+tslib_1.__exportStar(__webpack_require__(12), exports);
+tslib_1.__exportStar(__webpack_require__(13), exports);
+tslib_1.__exportStar(__webpack_require__(14), exports);
+tslib_1.__exportStar(__webpack_require__(28), exports);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -175,6 +177,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__makeTemplateObject", function() { return __makeTemplateObject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__importStar", function() { return __importStar; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__importDefault", function() { return __importDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__classPrivateFieldGet", function() { return __classPrivateFieldGet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__classPrivateFieldSet", function() { return __classPrivateFieldSet; });
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -243,10 +247,11 @@ function __metadata(metadataKey, metadataValue) {
 }
 
 function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 }
@@ -284,14 +289,15 @@ function __exportStar(m, exports) {
 }
 
 function __values(o) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
     if (m) return m.call(o);
-    return {
+    if (o && typeof o.length === "number") return {
         next: function () {
             if (o && i >= o.length) o = void 0;
             return { value: o && o[i++], done: !o };
         }
     };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 }
 
 function __read(o, n) {
@@ -372,10 +378,26 @@ function __importDefault(mod) {
     return (mod && mod.__esModule) ? mod : { default: mod };
 }
 
+function __classPrivateFieldGet(receiver, privateMap) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+    }
+    return privateMap.get(receiver);
+}
+
+function __classPrivateFieldSet(receiver, privateMap, value) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to set private field on non-instance");
+    }
+    privateMap.set(receiver, value);
+    return value;
+}
+
 
 /***/ }),
 /* 5 */,
-/* 6 */
+/* 6 */,
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -390,7 +412,7 @@ var BlueprintManifestType;
 //# sourceMappingURL=api.js.map
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -404,7 +426,7 @@ var IBlueprintAsRunLogEventContent;
 //# sourceMappingURL=asRunLog.js.map
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -416,11 +438,12 @@ var ConfigManifestEntryType;
     ConfigManifestEntryType["NUMBER"] = "number";
     ConfigManifestEntryType["BOOLEAN"] = "boolean";
     ConfigManifestEntryType["ENUM"] = "enum";
+    ConfigManifestEntryType["TABLE"] = "table";
 })(ConfigManifestEntryType = exports.ConfigManifestEntryType || (exports.ConfigManifestEntryType = {}));
 //# sourceMappingURL=config.js.map
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -448,7 +471,7 @@ var SourceLayerType;
 //# sourceMappingURL=content.js.map
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -463,7 +486,7 @@ var IBlueprintExternalMessageQueueType;
 //# sourceMappingURL=message.js.map
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -485,7 +508,7 @@ var PieceLifespan;
 //# sourceMappingURL=rundown.js.map
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -495,19 +518,21 @@ var LookaheadMode;
 (function (LookaheadMode) {
     LookaheadMode[LookaheadMode["NONE"] = 0] = "NONE";
     LookaheadMode[LookaheadMode["PRELOAD"] = 1] = "PRELOAD";
-    LookaheadMode[LookaheadMode["RETAIN"] = 2] = "RETAIN";
+    // RETAIN = 2, // Removed due to complexity and it being possible to emulate with WHEN_CLEAR and infinites
     LookaheadMode[LookaheadMode["WHEN_CLEAR"] = 3] = "WHEN_CLEAR";
 })(LookaheadMode = exports.LookaheadMode || (exports.LookaheadMode = {}));
 //# sourceMappingURL=studio.js.map
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const timeline_state_resolver_types_1 = __webpack_require__(3);
+const TSR = __webpack_require__(2);
+exports.TSR = TSR;
+var timeline_state_resolver_types_1 = __webpack_require__(2);
 exports.Timeline = timeline_state_resolver_types_1.Timeline;
 var PlayoutTimelinePrefixes;
 (function (PlayoutTimelinePrefixes) {
@@ -517,26 +542,30 @@ var PlayoutTimelinePrefixes;
     PlayoutTimelinePrefixes["PIECE_GROUP_FIRST_ITEM_PREFIX"] = "piece_group_firstobject_";
 })(PlayoutTimelinePrefixes = exports.PlayoutTimelinePrefixes || (exports.PlayoutTimelinePrefixes = {}));
 function getPartGroupId(part) {
-    if (typeof part === 'string')
+    if (typeof part === 'string') {
         return PlayoutTimelinePrefixes.PART_GROUP_PREFIX + part;
+    }
     return PlayoutTimelinePrefixes.PART_GROUP_PREFIX + part._id;
 }
 exports.getPartGroupId = getPartGroupId;
 function getPieceGroupId(piece) {
-    if (typeof piece === 'string')
+    if (typeof piece === 'string') {
         return PlayoutTimelinePrefixes.PIECE_GROUP_PREFIX + piece;
+    }
     return PlayoutTimelinePrefixes.PIECE_GROUP_PREFIX + piece._id;
 }
 exports.getPieceGroupId = getPieceGroupId;
 function getPartFirstObjectId(part) {
-    if (typeof part === 'string')
+    if (typeof part === 'string') {
         return PlayoutTimelinePrefixes.PART_GROUP_FIRST_ITEM_PREFIX + part;
+    }
     return PlayoutTimelinePrefixes.PART_GROUP_FIRST_ITEM_PREFIX + part._id;
 }
 exports.getPartFirstObjectId = getPartFirstObjectId;
 function getPieceFirstObjectId(piece) {
-    if (typeof piece === 'string')
+    if (typeof piece === 'string') {
         return PlayoutTimelinePrefixes.PIECE_GROUP_FIRST_ITEM_PREFIX + piece;
+    }
     return PlayoutTimelinePrefixes.PIECE_GROUP_FIRST_ITEM_PREFIX + piece._id;
 }
 exports.getPieceFirstObjectId = getPieceFirstObjectId;
@@ -549,7 +578,7 @@ var TimelineObjHoldMode;
 //# sourceMappingURL=timeline.js.map
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -566,6 +595,12 @@ var MappingAtemType;
     MappingAtemType[MappingAtemType["AudioChannel"] = 6] = "AudioChannel";
     MappingAtemType[MappingAtemType["MacroPlayer"] = 7] = "MacroPlayer";
 })(MappingAtemType = exports.MappingAtemType || (exports.MappingAtemType = {}));
+var AtemMediaPoolType;
+(function (AtemMediaPoolType) {
+    AtemMediaPoolType["Still"] = "still";
+    AtemMediaPoolType["Clip"] = "clip";
+    AtemMediaPoolType["Audio"] = "audio";
+})(AtemMediaPoolType = exports.AtemMediaPoolType || (exports.AtemMediaPoolType = {}));
 var TimelineContentTypeAtem;
 (function (TimelineContentTypeAtem) {
     TimelineContentTypeAtem["ME"] = "me";
@@ -587,10 +622,15 @@ var AtemTransitionStyle;
     AtemTransitionStyle[AtemTransitionStyle["CUT"] = 5] = "CUT";
     AtemTransitionStyle[AtemTransitionStyle["DUMMY"] = 6] = "DUMMY";
 })(AtemTransitionStyle = exports.AtemTransitionStyle || (exports.AtemTransitionStyle = {}));
+var MediaSourceType;
+(function (MediaSourceType) {
+    MediaSourceType[MediaSourceType["Still"] = 1] = "Still";
+    MediaSourceType[MediaSourceType["Clip"] = 2] = "Clip";
+})(MediaSourceType = exports.MediaSourceType || (exports.MediaSourceType = {}));
 //# sourceMappingURL=atem.js.map
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -790,23 +830,23 @@ var Chroma;
 //# sourceMappingURL=casparcg.js.map
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var TimelineContentTypeHttp;
-(function (TimelineContentTypeHttp) {
-    TimelineContentTypeHttp["GET"] = "get";
-    TimelineContentTypeHttp["POST"] = "post";
-    TimelineContentTypeHttp["PUT"] = "put";
-    TimelineContentTypeHttp["DELETE"] = "delete";
-})(TimelineContentTypeHttp = exports.TimelineContentTypeHttp || (exports.TimelineContentTypeHttp = {}));
-//# sourceMappingURL=http.js.map
+var TimelineContentTypeHTTP;
+(function (TimelineContentTypeHTTP) {
+    TimelineContentTypeHTTP["GET"] = "get";
+    TimelineContentTypeHTTP["POST"] = "post";
+    TimelineContentTypeHTTP["PUT"] = "put";
+    TimelineContentTypeHTTP["DELETE"] = "delete";
+})(TimelineContentTypeHTTP = exports.TimelineContentTypeHTTP || (exports.TimelineContentTypeHTTP = {}));
+//# sourceMappingURL=httpSend.js.map
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -873,7 +913,7 @@ var VideoFormat;
 //# sourceMappingURL=hyperdeck.js.map
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -883,11 +923,13 @@ var MappingLawoType;
 (function (MappingLawoType) {
     MappingLawoType["SOURCE"] = "source";
     MappingLawoType["FULL_PATH"] = "fullpath";
+    MappingLawoType["TRIGGER_VALUE"] = "triggerValue";
 })(MappingLawoType = exports.MappingLawoType || (exports.MappingLawoType = {}));
 var TimelineContentTypeLawo;
 (function (TimelineContentTypeLawo) {
     TimelineContentTypeLawo["SOURCE"] = "lawosource";
     TimelineContentTypeLawo["EMBER_PROPERTY"] = "lawofullpathemberproperty";
+    TimelineContentTypeLawo["TRIGGER_VALUE"] = "triggervalue";
 })(TimelineContentTypeLawo = exports.TimelineContentTypeLawo || (exports.TimelineContentTypeLawo = {}));
 var EmberTypes;
 (function (EmberTypes) {
@@ -899,7 +941,7 @@ var EmberTypes;
 //# sourceMappingURL=lawo.js.map
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -919,7 +961,7 @@ var OSCValueType;
 //# sourceMappingURL=osc.js.map
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -933,7 +975,7 @@ var TimelineContentTypePharos;
 //# sourceMappingURL=pharos.js.map
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -953,10 +995,10 @@ var TimelineContentTypePanasonicPtz;
     TimelineContentTypePanasonicPtz["ZOOM_SPEED"] = "zoomSpeed";
     TimelineContentTypePanasonicPtz["ZOOM"] = "zoom";
 })(TimelineContentTypePanasonicPtz = exports.TimelineContentTypePanasonicPtz || (exports.TimelineContentTypePanasonicPtz = {}));
-//# sourceMappingURL=ptz.js.map
+//# sourceMappingURL=panasonicPTZ.js.map
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -977,7 +1019,7 @@ var Commands;
 //# sourceMappingURL=sisyfos.js.map
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -997,7 +1039,7 @@ var QuantelTransitionType;
 //# sourceMappingURL=quantel.js.map
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1013,7 +1055,20 @@ var TimelineContentTypeTcp;
 //# sourceMappingURL=tcpSend.js.map
 
 /***/ }),
-/* 25 */
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var TimelineContentTypeSingularLive;
+(function (TimelineContentTypeSingularLive) {
+    TimelineContentTypeSingularLive["COMPOSITION"] = "composition";
+})(TimelineContentTypeSingularLive = exports.TimelineContentTypeSingularLive || (exports.TimelineContentTypeSingularLive = {}));
+//# sourceMappingURL=singularLive.js.map
+
+/***/ }),
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1030,14 +1085,14 @@ var EventType;
 //# sourceMappingURL=superfly-timeline.js.map
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = __webpack_require__(4);
-const _ = __webpack_require__(0);
+const _ = __webpack_require__(1);
 var iterateDeeplyEnum;
 (function (iterateDeeplyEnum) {
     iterateDeeplyEnum["CONTINUE"] = "$continue";
@@ -1048,12 +1103,13 @@ var iterateDeeplyEnum;
  * @param iteratee function to apply on every attribute
  */
 function iterateDeeply(obj, iteratee, key) {
-    let newValue = iteratee(obj, key);
+    const newValue = iteratee(obj, key);
     if (newValue === iterateDeeplyEnum.CONTINUE) {
         // Continue iterate deeper if possible
-        if (_.isObject(obj)) { // object or array
-            _.each(obj, (val, key) => {
-                obj[key] = iterateDeeply(val, iteratee, key);
+        if (_.isObject(obj)) {
+            // object or array
+            _.each(obj, (v, k) => {
+                obj[k] = iterateDeeply(v, iteratee, k);
             });
         }
         else {
@@ -1073,12 +1129,13 @@ exports.iterateDeeply = iterateDeeply;
  */
 function iterateDeeplyAsync(obj, iteratee, key) {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {
-        let newValue = yield iteratee(obj, key);
+        const newValue = yield iteratee(obj, key);
         if (newValue === iterateDeeplyEnum.CONTINUE) {
             // Continue iterate deeper if possible
-            if (_.isObject(obj)) { // object or array
-                yield Promise.all(_.map(obj, (val, key) => tslib_1.__awaiter(this, void 0, void 0, function* () {
-                    obj[key] = yield iterateDeeplyAsync(val, iteratee, key);
+            if (_.isObject(obj)) {
+                // object or array
+                yield Promise.all(_.map(obj, (v, k) => tslib_1.__awaiter(this, void 0, void 0, function* () {
+                    obj[k] = yield iterateDeeplyAsync(v, iteratee, k);
                 })));
             }
             else {
@@ -1095,8 +1152,6 @@ exports.iterateDeeplyAsync = iterateDeeplyAsync;
 //# sourceMappingURL=util.js.map
 
 /***/ }),
-/* 27 */,
-/* 28 */,
 /* 29 */,
 /* 30 */,
 /* 31 */,
@@ -1122,19 +1177,20 @@ exports.iterateDeeplyAsync = iterateDeeplyAsync;
 /* 51 */,
 /* 52 */,
 /* 53 */,
-/* 54 */
+/* 54 */,
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(2);
+const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(3);
 const manifest = {
     blueprintType: tv_automation_sofie_blueprints_integration_1.BlueprintManifestType.SYSTEM,
-    blueprintVersion: "0.1.0-75fea19",
-    integrationVersion: "0.24.1",
-    TSRVersion: "3.2.0",
-    minimumCoreVersion: '1.0.0'
+    blueprintVersion: "0.1.0-0.1.0-5-gc5c89e3",
+    integrationVersion: "1.10.0",
+    TSRVersion: "3.18.0",
+    minimumCoreVersion: '^1.0.0'
 };
 exports.default = manifest;
 

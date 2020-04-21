@@ -11,8 +11,8 @@ export declare enum SourceLayer {
 }
 export declare type LLayer = VirtualAbstractLLayer | AtemLLayer | CasparLLayer;
 /** Get all the Real LLayers (map to devices). Note: Does not include some which are dynamically generated */
-export declare function RealLLayers(): any[];
-export declare function VirtualLLayers(): any[];
+export declare function RealLLayers(): string[];
+export declare function VirtualLLayers(): VirtualAbstractLLayer.RecordControl[];
 export declare enum VirtualAbstractLLayer {
     RecordControl = "record_control"
 }

@@ -81,17 +81,11 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 37);
+/******/ 	return __webpack_require__(__webpack_require__.s = 46);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
-
-module.exports = _;
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -127,6 +121,12 @@ exports.isAdLibPiece = isAdLibPiece;
 
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+module.exports = _;
+
+/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -134,26 +134,6 @@ exports.isAdLibPiece = isAdLibPiece;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = __webpack_require__(4);
-tslib_1.__exportStar(__webpack_require__(6), exports);
-tslib_1.__exportStar(__webpack_require__(7), exports);
-tslib_1.__exportStar(__webpack_require__(8), exports);
-tslib_1.__exportStar(__webpack_require__(9), exports);
-tslib_1.__exportStar(__webpack_require__(10), exports);
-tslib_1.__exportStar(__webpack_require__(11), exports);
-tslib_1.__exportStar(__webpack_require__(12), exports);
-tslib_1.__exportStar(__webpack_require__(13), exports);
-tslib_1.__exportStar(__webpack_require__(26), exports);
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(4);
-tslib_1.__exportStar(__webpack_require__(14), exports);
 tslib_1.__exportStar(__webpack_require__(15), exports);
 tslib_1.__exportStar(__webpack_require__(16), exports);
 tslib_1.__exportStar(__webpack_require__(17), exports);
@@ -164,7 +144,9 @@ tslib_1.__exportStar(__webpack_require__(21), exports);
 tslib_1.__exportStar(__webpack_require__(22), exports);
 tslib_1.__exportStar(__webpack_require__(23), exports);
 tslib_1.__exportStar(__webpack_require__(24), exports);
-const Timeline = __webpack_require__(25);
+tslib_1.__exportStar(__webpack_require__(25), exports);
+tslib_1.__exportStar(__webpack_require__(26), exports);
+const Timeline = __webpack_require__(27);
 exports.Timeline = Timeline;
 var DeviceType;
 (function (DeviceType) {
@@ -181,7 +163,27 @@ var DeviceType;
     DeviceType[DeviceType["HTTPWATCHER"] = 10] = "HTTPWATCHER";
     DeviceType[DeviceType["SISYFOS"] = 11] = "SISYFOS";
     DeviceType[DeviceType["QUANTEL"] = 12] = "QUANTEL";
+    DeviceType[DeviceType["SINGULAR_LIVE"] = 14] = "SINGULAR_LIVE";
 })(DeviceType = exports.DeviceType || (exports.DeviceType = {}));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = __webpack_require__(4);
+tslib_1.__exportStar(__webpack_require__(7), exports);
+tslib_1.__exportStar(__webpack_require__(8), exports);
+tslib_1.__exportStar(__webpack_require__(9), exports);
+tslib_1.__exportStar(__webpack_require__(10), exports);
+tslib_1.__exportStar(__webpack_require__(11), exports);
+tslib_1.__exportStar(__webpack_require__(12), exports);
+tslib_1.__exportStar(__webpack_require__(13), exports);
+tslib_1.__exportStar(__webpack_require__(14), exports);
+tslib_1.__exportStar(__webpack_require__(28), exports);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -210,6 +212,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__makeTemplateObject", function() { return __makeTemplateObject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__importStar", function() { return __importStar; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__importDefault", function() { return __importDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__classPrivateFieldGet", function() { return __classPrivateFieldGet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__classPrivateFieldSet", function() { return __classPrivateFieldSet; });
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -278,10 +282,11 @@ function __metadata(metadataKey, metadataValue) {
 }
 
 function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 }
@@ -319,14 +324,15 @@ function __exportStar(m, exports) {
 }
 
 function __values(o) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
     if (m) return m.call(o);
-    return {
+    if (o && typeof o.length === "number") return {
         next: function () {
             if (o && i >= o.length) o = void 0;
             return { value: o && o[i++], done: !o };
         }
     };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 }
 
 function __read(o, n) {
@@ -407,6 +413,21 @@ function __importDefault(mod) {
     return (mod && mod.__esModule) ? mod : { default: mod };
 }
 
+function __classPrivateFieldGet(receiver, privateMap) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+    }
+    return privateMap.get(receiver);
+}
+
+function __classPrivateFieldSet(receiver, privateMap, value) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to set private field on non-instance");
+    }
+    privateMap.set(receiver, value);
+    return value;
+}
+
 
 /***/ }),
 /* 5 */
@@ -415,7 +436,7 @@ function __importDefault(mod) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _ = __webpack_require__(0);
+const _ = __webpack_require__(1);
 var SourceLayer;
 (function (SourceLayer) {
     // Graphics
@@ -488,6 +509,144 @@ var LawoLLayer;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(3);
+exports.CoreInjectedKeys = ['SofieHostURL'];
+var LightingControlType;
+(function (LightingControlType) {
+    LightingControlType["None"] = "None";
+    LightingControlType["Hog4PC"] = "Hog4PC";
+    LightingControlType["Pharos"] = "Pharos";
+})(LightingControlType = exports.LightingControlType || (exports.LightingControlType = {}));
+exports.StudioConfigManifest = [{
+        id: 'MediaFlowId',
+        name: 'Media Flow Id',
+        description: '',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.STRING,
+        required: false,
+        defaultVal: 'flow0'
+    }, {
+        id: 'SourcesCam',
+        name: 'Camera Mapping',
+        description: 'Camera number to ATEM input (eg 1:1,9:2)',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.STRING,
+        required: false,
+        defaultVal: '1:1,2:2,3:3,4:4,5:5'
+    }, {
+        id: 'SourcesRM',
+        name: 'RM Mapping',
+        description: 'RM number to ATEM input (eg 1:6,2:7)',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.STRING,
+        required: false,
+        defaultVal: '1:6,2:7,3:8,4:9,5:10,6:11,7:12'
+    }, {
+        id: 'HyperdeckCount',
+        name: 'Hyperdeck Count',
+        description: 'Number of Hyperdecks used for recordings',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
+        required: false,
+        defaultVal: 1
+    }, {
+        id: 'AtemSource.DSK1F',
+        name: 'ATEM DSK1 Fill',
+        description: 'ATEM vision mixer input for DSK1 Fill',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
+        required: false,
+        defaultVal: 13
+    }, {
+        id: 'AtemSource.DSK1K',
+        name: 'ATEM DSK1 Key',
+        description: 'ATEM vision mixer input for DSK1 Key',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
+        required: false,
+        defaultVal: 14
+    }, {
+        id: 'AtemSource.DSK2F',
+        name: 'ATEM DSK2 Fill',
+        description: 'ATEM vision mixer input for DSK2 Fill',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
+        required: false,
+        defaultVal: 15
+    }, {
+        id: 'AtemSource.DSK2K',
+        name: 'ATEM DSK2 Key',
+        description: 'ATEM vision mixer input for DSK2 Key',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
+        required: false,
+        defaultVal: 16
+    }, {
+        id: 'AtemSource.Server1',
+        name: 'ATEM Server1',
+        description: 'ATEM vision mixer input for Server1',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
+        required: false,
+        defaultVal: 17
+    }, {
+        id: 'AtemSource.Server1Next',
+        name: 'ATEM Server1-Next',
+        description: 'ATEM vision mixer input for Server1-Next',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
+        required: false,
+        defaultVal: 18
+    }, {
+        id: 'AtemSource.Server2',
+        name: 'ATEM Server2',
+        description: 'ATEM vision mixer input for Server2',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
+        required: false,
+        defaultVal: 19
+    }, {
+        id: 'AtemSource.Server3',
+        name: 'ATEM Server3',
+        description: 'ATEM vision mixer input for Server3',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
+        required: false,
+        defaultVal: 20
+    }, {
+        id: 'AtemSource.SplitArtF',
+        name: 'ATEM Split Screen Art Fill',
+        description: 'ATEM vision mixer input for Split Screen Art Fill',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
+        required: false,
+        defaultVal: 3010
+    }, {
+        id: 'AtemSource.SplitArtK',
+        name: 'ATEM Split Screen Art Key',
+        description: 'ATEM vision mixer input for Split Screen Art Key',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
+        required: false,
+        defaultVal: 3011
+    }, {
+        id: 'AtemSource.Default',
+        name: 'ATEM Default source',
+        description: 'ATEM vision mixer default source',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
+        required: false,
+        defaultVal: 2001
+    }, {
+        id: 'LawoFadeInDuration',
+        name: 'Default Lawo fade in duration',
+        description: 'in ms',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
+        required: false,
+        defaultVal: 500 // 12,5 frames (minimum Lawo fade duration)
+    }, {
+        id: 'CasparOutputDelay',
+        name: 'CasparCG Output latency',
+        description: 'Delay between playback and output on SDI (ms)',
+        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
+        required: false,
+        defaultVal: 320 // 8 frames (5 in decklinks + casparcg)
+    }];
+exports.ShowStyleConfigManifest = [];
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
 var BlueprintManifestType;
 (function (BlueprintManifestType) {
     BlueprintManifestType["SYSTEM"] = "system";
@@ -497,7 +656,7 @@ var BlueprintManifestType;
 //# sourceMappingURL=api.js.map
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -511,7 +670,7 @@ var IBlueprintAsRunLogEventContent;
 //# sourceMappingURL=asRunLog.js.map
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -523,11 +682,12 @@ var ConfigManifestEntryType;
     ConfigManifestEntryType["NUMBER"] = "number";
     ConfigManifestEntryType["BOOLEAN"] = "boolean";
     ConfigManifestEntryType["ENUM"] = "enum";
+    ConfigManifestEntryType["TABLE"] = "table";
 })(ConfigManifestEntryType = exports.ConfigManifestEntryType || (exports.ConfigManifestEntryType = {}));
 //# sourceMappingURL=config.js.map
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -555,7 +715,7 @@ var SourceLayerType;
 //# sourceMappingURL=content.js.map
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -570,7 +730,7 @@ var IBlueprintExternalMessageQueueType;
 //# sourceMappingURL=message.js.map
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -592,7 +752,7 @@ var PieceLifespan;
 //# sourceMappingURL=rundown.js.map
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -602,19 +762,21 @@ var LookaheadMode;
 (function (LookaheadMode) {
     LookaheadMode[LookaheadMode["NONE"] = 0] = "NONE";
     LookaheadMode[LookaheadMode["PRELOAD"] = 1] = "PRELOAD";
-    LookaheadMode[LookaheadMode["RETAIN"] = 2] = "RETAIN";
+    // RETAIN = 2, // Removed due to complexity and it being possible to emulate with WHEN_CLEAR and infinites
     LookaheadMode[LookaheadMode["WHEN_CLEAR"] = 3] = "WHEN_CLEAR";
 })(LookaheadMode = exports.LookaheadMode || (exports.LookaheadMode = {}));
 //# sourceMappingURL=studio.js.map
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const timeline_state_resolver_types_1 = __webpack_require__(3);
+const TSR = __webpack_require__(2);
+exports.TSR = TSR;
+var timeline_state_resolver_types_1 = __webpack_require__(2);
 exports.Timeline = timeline_state_resolver_types_1.Timeline;
 var PlayoutTimelinePrefixes;
 (function (PlayoutTimelinePrefixes) {
@@ -624,26 +786,30 @@ var PlayoutTimelinePrefixes;
     PlayoutTimelinePrefixes["PIECE_GROUP_FIRST_ITEM_PREFIX"] = "piece_group_firstobject_";
 })(PlayoutTimelinePrefixes = exports.PlayoutTimelinePrefixes || (exports.PlayoutTimelinePrefixes = {}));
 function getPartGroupId(part) {
-    if (typeof part === 'string')
+    if (typeof part === 'string') {
         return PlayoutTimelinePrefixes.PART_GROUP_PREFIX + part;
+    }
     return PlayoutTimelinePrefixes.PART_GROUP_PREFIX + part._id;
 }
 exports.getPartGroupId = getPartGroupId;
 function getPieceGroupId(piece) {
-    if (typeof piece === 'string')
+    if (typeof piece === 'string') {
         return PlayoutTimelinePrefixes.PIECE_GROUP_PREFIX + piece;
+    }
     return PlayoutTimelinePrefixes.PIECE_GROUP_PREFIX + piece._id;
 }
 exports.getPieceGroupId = getPieceGroupId;
 function getPartFirstObjectId(part) {
-    if (typeof part === 'string')
+    if (typeof part === 'string') {
         return PlayoutTimelinePrefixes.PART_GROUP_FIRST_ITEM_PREFIX + part;
+    }
     return PlayoutTimelinePrefixes.PART_GROUP_FIRST_ITEM_PREFIX + part._id;
 }
 exports.getPartFirstObjectId = getPartFirstObjectId;
 function getPieceFirstObjectId(piece) {
-    if (typeof piece === 'string')
+    if (typeof piece === 'string') {
         return PlayoutTimelinePrefixes.PIECE_GROUP_FIRST_ITEM_PREFIX + piece;
+    }
     return PlayoutTimelinePrefixes.PIECE_GROUP_FIRST_ITEM_PREFIX + piece._id;
 }
 exports.getPieceFirstObjectId = getPieceFirstObjectId;
@@ -656,7 +822,7 @@ var TimelineObjHoldMode;
 //# sourceMappingURL=timeline.js.map
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -673,6 +839,12 @@ var MappingAtemType;
     MappingAtemType[MappingAtemType["AudioChannel"] = 6] = "AudioChannel";
     MappingAtemType[MappingAtemType["MacroPlayer"] = 7] = "MacroPlayer";
 })(MappingAtemType = exports.MappingAtemType || (exports.MappingAtemType = {}));
+var AtemMediaPoolType;
+(function (AtemMediaPoolType) {
+    AtemMediaPoolType["Still"] = "still";
+    AtemMediaPoolType["Clip"] = "clip";
+    AtemMediaPoolType["Audio"] = "audio";
+})(AtemMediaPoolType = exports.AtemMediaPoolType || (exports.AtemMediaPoolType = {}));
 var TimelineContentTypeAtem;
 (function (TimelineContentTypeAtem) {
     TimelineContentTypeAtem["ME"] = "me";
@@ -694,10 +866,15 @@ var AtemTransitionStyle;
     AtemTransitionStyle[AtemTransitionStyle["CUT"] = 5] = "CUT";
     AtemTransitionStyle[AtemTransitionStyle["DUMMY"] = 6] = "DUMMY";
 })(AtemTransitionStyle = exports.AtemTransitionStyle || (exports.AtemTransitionStyle = {}));
+var MediaSourceType;
+(function (MediaSourceType) {
+    MediaSourceType[MediaSourceType["Still"] = 1] = "Still";
+    MediaSourceType[MediaSourceType["Clip"] = 2] = "Clip";
+})(MediaSourceType = exports.MediaSourceType || (exports.MediaSourceType = {}));
 //# sourceMappingURL=atem.js.map
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -897,23 +1074,23 @@ var Chroma;
 //# sourceMappingURL=casparcg.js.map
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var TimelineContentTypeHttp;
-(function (TimelineContentTypeHttp) {
-    TimelineContentTypeHttp["GET"] = "get";
-    TimelineContentTypeHttp["POST"] = "post";
-    TimelineContentTypeHttp["PUT"] = "put";
-    TimelineContentTypeHttp["DELETE"] = "delete";
-})(TimelineContentTypeHttp = exports.TimelineContentTypeHttp || (exports.TimelineContentTypeHttp = {}));
-//# sourceMappingURL=http.js.map
+var TimelineContentTypeHTTP;
+(function (TimelineContentTypeHTTP) {
+    TimelineContentTypeHTTP["GET"] = "get";
+    TimelineContentTypeHTTP["POST"] = "post";
+    TimelineContentTypeHTTP["PUT"] = "put";
+    TimelineContentTypeHTTP["DELETE"] = "delete";
+})(TimelineContentTypeHTTP = exports.TimelineContentTypeHTTP || (exports.TimelineContentTypeHTTP = {}));
+//# sourceMappingURL=httpSend.js.map
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -980,7 +1157,7 @@ var VideoFormat;
 //# sourceMappingURL=hyperdeck.js.map
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -990,11 +1167,13 @@ var MappingLawoType;
 (function (MappingLawoType) {
     MappingLawoType["SOURCE"] = "source";
     MappingLawoType["FULL_PATH"] = "fullpath";
+    MappingLawoType["TRIGGER_VALUE"] = "triggerValue";
 })(MappingLawoType = exports.MappingLawoType || (exports.MappingLawoType = {}));
 var TimelineContentTypeLawo;
 (function (TimelineContentTypeLawo) {
     TimelineContentTypeLawo["SOURCE"] = "lawosource";
     TimelineContentTypeLawo["EMBER_PROPERTY"] = "lawofullpathemberproperty";
+    TimelineContentTypeLawo["TRIGGER_VALUE"] = "triggervalue";
 })(TimelineContentTypeLawo = exports.TimelineContentTypeLawo || (exports.TimelineContentTypeLawo = {}));
 var EmberTypes;
 (function (EmberTypes) {
@@ -1006,7 +1185,7 @@ var EmberTypes;
 //# sourceMappingURL=lawo.js.map
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1026,7 +1205,7 @@ var OSCValueType;
 //# sourceMappingURL=osc.js.map
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1040,7 +1219,7 @@ var TimelineContentTypePharos;
 //# sourceMappingURL=pharos.js.map
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1060,10 +1239,10 @@ var TimelineContentTypePanasonicPtz;
     TimelineContentTypePanasonicPtz["ZOOM_SPEED"] = "zoomSpeed";
     TimelineContentTypePanasonicPtz["ZOOM"] = "zoom";
 })(TimelineContentTypePanasonicPtz = exports.TimelineContentTypePanasonicPtz || (exports.TimelineContentTypePanasonicPtz = {}));
-//# sourceMappingURL=ptz.js.map
+//# sourceMappingURL=panasonicPTZ.js.map
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1084,7 +1263,7 @@ var Commands;
 //# sourceMappingURL=sisyfos.js.map
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1104,7 +1283,7 @@ var QuantelTransitionType;
 //# sourceMappingURL=quantel.js.map
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1120,7 +1299,20 @@ var TimelineContentTypeTcp;
 //# sourceMappingURL=tcpSend.js.map
 
 /***/ }),
-/* 25 */
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var TimelineContentTypeSingularLive;
+(function (TimelineContentTypeSingularLive) {
+    TimelineContentTypeSingularLive["COMPOSITION"] = "composition";
+})(TimelineContentTypeSingularLive = exports.TimelineContentTypeSingularLive || (exports.TimelineContentTypeSingularLive = {}));
+//# sourceMappingURL=singularLive.js.map
+
+/***/ }),
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1137,14 +1329,14 @@ var EventType;
 //# sourceMappingURL=superfly-timeline.js.map
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = __webpack_require__(4);
-const _ = __webpack_require__(0);
+const _ = __webpack_require__(1);
 var iterateDeeplyEnum;
 (function (iterateDeeplyEnum) {
     iterateDeeplyEnum["CONTINUE"] = "$continue";
@@ -1155,12 +1347,13 @@ var iterateDeeplyEnum;
  * @param iteratee function to apply on every attribute
  */
 function iterateDeeply(obj, iteratee, key) {
-    let newValue = iteratee(obj, key);
+    const newValue = iteratee(obj, key);
     if (newValue === iterateDeeplyEnum.CONTINUE) {
         // Continue iterate deeper if possible
-        if (_.isObject(obj)) { // object or array
-            _.each(obj, (val, key) => {
-                obj[key] = iterateDeeply(val, iteratee, key);
+        if (_.isObject(obj)) {
+            // object or array
+            _.each(obj, (v, k) => {
+                obj[k] = iterateDeeply(v, iteratee, k);
             });
         }
         else {
@@ -1180,12 +1373,13 @@ exports.iterateDeeply = iterateDeeply;
  */
 function iterateDeeplyAsync(obj, iteratee, key) {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {
-        let newValue = yield iteratee(obj, key);
+        const newValue = yield iteratee(obj, key);
         if (newValue === iterateDeeplyEnum.CONTINUE) {
             // Continue iterate deeper if possible
-            if (_.isObject(obj)) { // object or array
-                yield Promise.all(_.map(obj, (val, key) => tslib_1.__awaiter(this, void 0, void 0, function* () {
-                    obj[key] = yield iterateDeeplyAsync(val, iteratee, key);
+            if (_.isObject(obj)) {
+                // object or array
+                yield Promise.all(_.map(obj, (v, k) => tslib_1.__awaiter(this, void 0, void 0, function* () {
+                    obj[k] = yield iterateDeeplyAsync(v, iteratee, k);
                 })));
             }
             else {
@@ -1202,16 +1396,16 @@ exports.iterateDeeplyAsync = iterateDeeplyAsync;
 //# sourceMappingURL=util.js.map
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _ = __webpack_require__(0);
-const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(2);
-const util_1 = __webpack_require__(1);
-const classes_1 = __webpack_require__(29);
+const _ = __webpack_require__(1);
+const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(3);
+const util_1 = __webpack_require__(0);
+const classes_1 = __webpack_require__(31);
 var Attributes;
 (function (Attributes) {
     Attributes["CAMERA"] = "name";
@@ -1334,7 +1528,7 @@ exports.GetInputValueFromPiece = GetInputValueFromPiece;
 
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1367,7 +1561,7 @@ var AtemSourceIndex;
 
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1390,154 +1584,963 @@ var ObjectType;
 
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(2);
-exports.CoreInjectedKeys = ['SofieHostURL'];
-var LightingControlType;
-(function (LightingControlType) {
-    LightingControlType["None"] = "None";
-    LightingControlType["Hog4PC"] = "Hog4PC";
-    LightingControlType["Pharos"] = "Pharos";
-})(LightingControlType = exports.LightingControlType || (exports.LightingControlType = {}));
-exports.StudioConfigManifest = [{
-        id: 'MediaFlowId',
-        name: 'Media Flow Id',
-        description: '',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.STRING,
-        required: false,
-        defaultVal: 'flow0'
-    }, {
-        id: 'SourcesCam',
-        name: 'Camera Mapping',
-        description: 'Camera number to ATEM input (eg 1:1,9:2)',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.STRING,
-        required: false,
-        defaultVal: '1:1,2:2,3:3,4:4,5:5'
-    }, {
-        id: 'SourcesRM',
-        name: 'RM Mapping',
-        description: 'RM number to ATEM input (eg 1:6,2:7)',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.STRING,
-        required: false,
-        defaultVal: '1:6,2:7,3:8,4:9,5:10,6:11,7:12'
-    }, {
-        id: 'HyperdeckCount',
-        name: 'Hyperdeck Count',
-        description: 'Number of Hyperdecks used for recordings',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
-        required: false,
-        defaultVal: 1
-    }, {
-        id: 'AtemSource.DSK1F',
-        name: 'ATEM DSK1 Fill',
-        description: 'ATEM vision mixer input for DSK1 Fill',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
-        required: false,
-        defaultVal: 13
-    }, {
-        id: 'AtemSource.DSK1K',
-        name: 'ATEM DSK1 Key',
-        description: 'ATEM vision mixer input for DSK1 Key',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
-        required: false,
-        defaultVal: 14
-    }, {
-        id: 'AtemSource.DSK2F',
-        name: 'ATEM DSK2 Fill',
-        description: 'ATEM vision mixer input for DSK2 Fill',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
-        required: false,
-        defaultVal: 15
-    }, {
-        id: 'AtemSource.DSK2K',
-        name: 'ATEM DSK2 Key',
-        description: 'ATEM vision mixer input for DSK2 Key',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
-        required: false,
-        defaultVal: 16
-    }, {
-        id: 'AtemSource.Server1',
-        name: 'ATEM Server1',
-        description: 'ATEM vision mixer input for Server1',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
-        required: false,
-        defaultVal: 17
-    }, {
-        id: 'AtemSource.Server1Next',
-        name: 'ATEM Server1-Next',
-        description: 'ATEM vision mixer input for Server1-Next',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
-        required: false,
-        defaultVal: 18
-    }, {
-        id: 'AtemSource.Server2',
-        name: 'ATEM Server2',
-        description: 'ATEM vision mixer input for Server2',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
-        required: false,
-        defaultVal: 19
-    }, {
-        id: 'AtemSource.Server3',
-        name: 'ATEM Server3',
-        description: 'ATEM vision mixer input for Server3',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
-        required: false,
-        defaultVal: 20
-    }, {
-        id: 'AtemSource.SplitArtF',
-        name: 'ATEM Split Screen Art Fill',
-        description: 'ATEM vision mixer input for Split Screen Art Fill',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
-        required: false,
-        defaultVal: 3010
-    }, {
-        id: 'AtemSource.SplitArtK',
-        name: 'ATEM Split Screen Art Key',
-        description: 'ATEM vision mixer input for Split Screen Art Key',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
-        required: false,
-        defaultVal: 3011
-    }, {
-        id: 'AtemSource.Default',
-        name: 'ATEM Default source',
-        description: 'ATEM vision mixer default source',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
-        required: false,
-        defaultVal: 2001
-    }, {
-        id: 'LawoFadeInDuration',
-        name: 'Default Lawo fade in duration',
-        description: 'in ms',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
-        required: false,
-        defaultVal: 500 // 12,5 frames (minimum Lawo fade duration)
-    }, {
-        id: 'CasparOutputDelay',
-        name: 'CasparCG Output latency',
-        description: 'Delay between playback and output on SDI (ms)',
-        type: tv_automation_sofie_blueprints_integration_1.ConfigManifestEntryType.NUMBER,
-        required: false,
-        defaultVal: 320 // 8 frames (5 in decklinks + casparcg)
-    }];
-exports.ShowStyleConfigManifest = [];
+const util_1 = __webpack_require__(0);
+const util_2 = __webpack_require__(33);
+const devices_1 = __webpack_require__(38);
+const variants_defaults_1 = __webpack_require__(39);
+/**
+ * Versions:
+ * 0.1.0: Core 0.24.0
+ */
+exports.studioMigrations = util_1.literal([
+    util_2.ensureStudioConfig('0.1.0', 'SourcesCam', null, 'text', 'Studio config: Camera mappings', 'Enter the Camera input mapping (example: "1:1,2:2,3:3,4:4"'),
+    ...devices_1.deviceMigrations,
+    // Fill in any mappings that did not exist before
+    // Note: These should only be run as the very final step of all migrations. otherwise they will add items too early, and confuse old migrations
+    ...util_2.getMappingsDefaultsMigrationSteps("0.1.0-0.1.0-5-gc5c89e3")
+]);
+exports.showStyleMigrations = util_1.literal([
+    // Fill in any layers that did not exist before
+    // Note: These should only be run as the very final step of all migrations. otherwise they will add items too early, and confuse old migrations
+    ...variants_defaults_1.getCreateVariantMigrationSteps(),
+    ...util_2.getSourceLayerDefaultsMigrationSteps("0.1.0-0.1.0-5-gc5c89e3"),
+    ...util_2.getOutputLayerDefaultsMigrationSteps("0.1.0-0.1.0-5-gc5c89e3"),
+    ...util_2.getRuntimeArgumentsDefaultsMigrationSteps("0.1.0-0.1.0-5-gc5c89e3")
+]);
 
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _ = __webpack_require__(0);
-const objectPath = __webpack_require__(32);
-const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(2);
-const config_manifests_1 = __webpack_require__(30);
+const _ = __webpack_require__(1);
+const util_1 = __webpack_require__(0);
+const mappings_defaults_1 = __webpack_require__(34);
+const sourcelayer_defaults_1 = __webpack_require__(35);
+const outputlayer_defaults_1 = __webpack_require__(36);
+const runtime_arguments_defaults_1 = __webpack_require__(37);
+const config_manifests_1 = __webpack_require__(6);
+function ensureStudioConfig(version, configName, value, // null if manual
+inputType, // EditAttribute types
+label, description, defaultValue, oldConfigName, dropdownOptions) {
+    return {
+        id: `studioConfig.${configName}`,
+        version: version,
+        canBeRunAutomatically: (_.isNull(value) ? false : true),
+        validate: (context) => {
+            let configVal = context.getConfig(configName);
+            let oldConfigVal = oldConfigName && context.getConfig(oldConfigName);
+            if (configVal === undefined && oldConfigVal === undefined) {
+                return `${configName} is missing`;
+            }
+            return false;
+        },
+        input: (context) => {
+            let inputs = [];
+            let configVal = context.getConfig(configName);
+            if (inputType && configVal === undefined) {
+                inputs.push({
+                    label: label,
+                    description: description,
+                    inputType: inputType,
+                    attribute: 'value',
+                    defaultValue: defaultValue,
+                    dropdownOptions: dropdownOptions
+                });
+            }
+            return inputs;
+        },
+        migrate: (context, input) => {
+            context.setConfig(configName, _.isNull(value) ? input.value : value);
+        }
+    };
+}
+exports.ensureStudioConfig = ensureStudioConfig;
+function renameStudioConfig(version, oldConfigName, newConfigName, updateValue) {
+    return {
+        id: `studioConfig.${oldConfigName}`,
+        version: version,
+        canBeRunAutomatically: true,
+        validate: (context) => {
+            const configVal = context.getConfig(oldConfigName);
+            if (configVal !== undefined) {
+                return `${oldConfigName} is defined`;
+            }
+            return false;
+        },
+        migrate: (context) => {
+            let configVal = context.getConfig(oldConfigName);
+            if (configVal !== undefined) {
+                context.setConfig(newConfigName, updateValue ? updateValue(configVal) : configVal);
+                context.removeConfig(oldConfigName);
+            }
+        }
+    };
+}
+exports.renameStudioConfig = renameStudioConfig;
+function renameMapping(version, oldMappingName, newMappingName) {
+    return {
+        id: `studioMapping.${oldMappingName}`,
+        version: version,
+        canBeRunAutomatically: true,
+        validate: (context) => {
+            const mapping = context.getMapping(oldMappingName);
+            if (mapping !== undefined) {
+                return `${oldMappingName} is defined`;
+            }
+            return false;
+        },
+        migrate: (context) => {
+            const mapping = context.getMapping(oldMappingName);
+            if (mapping) {
+                context.insertMapping(newMappingName, mapping);
+                context.removeMapping(oldMappingName);
+            }
+        }
+    };
+}
+exports.renameMapping = renameMapping;
+function removeMapping(version, oldMappingName) {
+    return {
+        id: `studioMapping.${oldMappingName}`,
+        version: version,
+        canBeRunAutomatically: true,
+        validate: (context) => {
+            const mapping = context.getMapping(oldMappingName);
+            if (mapping) {
+                return `${oldMappingName} is defined`;
+            }
+            return false;
+        },
+        migrate: (context) => {
+            const mapping = context.getMapping(oldMappingName);
+            if (mapping) {
+                context.removeMapping(oldMappingName);
+            }
+        }
+    };
+}
+exports.removeMapping = removeMapping;
+function getMappingsDefaultsMigrationSteps(versionStr) {
+    const res = _.compact(_.map(mappings_defaults_1.default, (defaultVal, id) => {
+        return util_1.literal({
+            id: `mappings.defaults.${id}`,
+            version: versionStr,
+            canBeRunAutomatically: true,
+            validate: (context) => {
+                // Optional mappings based on studio settings can be dropped here
+                if (!context.getMapping(id))
+                    return `Mapping "${id}" doesn't exist on ShowBaseStyle`;
+                return false;
+            },
+            migrate: (context) => {
+                if (!context.getMapping(id)) {
+                    context.insertMapping(id, defaultVal);
+                }
+            }
+        });
+    }));
+    let hyperdeckCount = (context) => {
+        const configCount = context.getConfig('HyperdeckCount');
+        if (typeof configCount === 'number') {
+            return configCount;
+        }
+        else {
+            const defaultVal = config_manifests_1.StudioConfigManifest.find(c => c.id === 'HyperdeckCount');
+            if (defaultVal === undefined) {
+                throw new Error('Expected HyperdeckCount to be defined in StudioConfigManifest');
+            }
+            else {
+                return defaultVal.defaultVal;
+            }
+        }
+    };
+    res.push(util_1.literal({
+        id: `mappings.defaults._all_hyperdeck_`,
+        version: versionStr,
+        canBeRunAutomatically: true,
+        dependOnResultFrom: 'studioConfig.HyperdeckCount',
+        validate: (context) => {
+            const expected = _.keys(mappings_defaults_1.getHyperdeckMappings(hyperdeckCount(context)));
+            let mappingMissing = false;
+            _.each(expected, f => {
+                if (!context.getMapping(f)) {
+                    mappingMissing = `${f} is missing`;
+                }
+            });
+            return mappingMissing;
+        },
+        migrate: (context) => {
+            const expected = mappings_defaults_1.getHyperdeckMappings(hyperdeckCount(context));
+            _.each(expected, (v, k) => {
+                if (!context.getMapping(k)) {
+                    context.insertMapping(k, v);
+                }
+            });
+        }
+    }));
+    return res;
+}
+exports.getMappingsDefaultsMigrationSteps = getMappingsDefaultsMigrationSteps;
+function getSourceLayerDefaultsMigrationSteps(versionStr) {
+    return _.compact(_.map(sourcelayer_defaults_1.default, (defaultVal) => {
+        return util_1.literal({
+            id: `sourcelayer.defaults.${defaultVal._id}`,
+            version: versionStr,
+            canBeRunAutomatically: true,
+            validate: (context) => {
+                if (!context.getSourceLayer(defaultVal._id))
+                    return `SourceLayer "${defaultVal._id}" doesn't exist on ShowBaseStyle`;
+                return false;
+            },
+            migrate: (context) => {
+                if (!context.getSourceLayer(defaultVal._id)) {
+                    context.insertSourceLayer(defaultVal._id, defaultVal);
+                }
+            }
+        });
+    }));
+}
+exports.getSourceLayerDefaultsMigrationSteps = getSourceLayerDefaultsMigrationSteps;
+function getOutputLayerDefaultsMigrationSteps(versionStr) {
+    return _.compact(_.map(outputlayer_defaults_1.default, (defaultVal) => {
+        return util_1.literal({
+            id: `outputlayer.defaults.${defaultVal._id}`,
+            version: versionStr,
+            canBeRunAutomatically: true,
+            validate: (context) => {
+                if (!context.getOutputLayer(defaultVal._id))
+                    return `OutputLayer "${defaultVal._id}" doesn't exist on ShowBaseStyle`;
+                return false;
+            },
+            migrate: (context) => {
+                if (!context.getOutputLayer(defaultVal._id)) {
+                    context.insertOutputLayer(defaultVal._id, defaultVal);
+                }
+            }
+        });
+    }));
+}
+exports.getOutputLayerDefaultsMigrationSteps = getOutputLayerDefaultsMigrationSteps;
+function getRuntimeArgumentsDefaultsMigrationSteps(versionStr) {
+    return _.compact(_.map(runtime_arguments_defaults_1.default, (defaultVal) => {
+        return util_1.literal({
+            id: `runtimeArguments.defaults.${defaultVal._id}`,
+            version: versionStr,
+            canBeRunAutomatically: true,
+            validate: (context) => {
+                if (!context.getRuntimeArgument(defaultVal._id))
+                    return `RuntimeArgument "${defaultVal._id}" doesn't exist on ShowBaseStyle`;
+                return false;
+            },
+            migrate: (context) => {
+                if (!context.getRuntimeArgument(defaultVal._id)) {
+                    context.insertRuntimeArgument(defaultVal._id, defaultVal);
+                }
+            }
+        });
+    }));
+}
+exports.getRuntimeArgumentsDefaultsMigrationSteps = getRuntimeArgumentsDefaultsMigrationSteps;
+
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const timeline_state_resolver_types_1 = __webpack_require__(2);
+const util_1 = __webpack_require__(0);
+const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(3);
+const layers_1 = __webpack_require__(5);
+exports.default = util_1.literal({
+    'core_abstract': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.ABSTRACT,
+        deviceId: 'abstract0',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE
+    }),
+    'casparcg_player_wipe': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
+        deviceId: 'caspar01',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        channel: 3,
+        layer: 199
+    }),
+    'casparcg_player_soundeffect': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
+        deviceId: 'caspar01',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        channel: 3,
+        layer: 130
+    }),
+    'casparcg_player_clip_next_warning': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
+        deviceId: 'caspar01',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        channel: 4,
+        layer: 99
+    }),
+    'casparcg_player_clip': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
+        deviceId: 'caspar01',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.PRELOAD,
+        channel: 1,
+        layer: 111
+    }),
+    'casparcg_player_clip_next': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
+        deviceId: 'caspar01',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        channel: 4,
+        layer: 101
+    }),
+    'casparcg_player_clip_next_custom': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
+        deviceId: 'caspar01',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        channel: 4,
+        layer: 110
+    }),
+    'casparcg_cg_graphics': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
+        deviceId: 'caspar02',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        channel: 2,
+        layer: 120
+    }),
+    'casparcg_cg_countdown': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
+        deviceId: 'caspar02',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        channel: 1,
+        layer: 120
+    }),
+    'casparcg_cg_effects': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
+        deviceId: 'caspar01',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        channel: 3,
+        layer: 120
+    }),
+    'atem_me_program': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.ATEM,
+        deviceId: 'atem0',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        mappingType: timeline_state_resolver_types_1.MappingAtemType.MixEffect,
+        index: 0 // 0 = ME1
+    }),
+    'atem_aux_lookahead': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.ATEM,
+        deviceId: 'atem0',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.WHEN_CLEAR,
+        mappingType: timeline_state_resolver_types_1.MappingAtemType.Auxilliary,
+        index: 1
+    }),
+    'atem_aux_ssrc': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.ATEM,
+        deviceId: 'atem0',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        mappingType: timeline_state_resolver_types_1.MappingAtemType.Auxilliary,
+        index: 2
+    }),
+    'atem_aux_clean': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.ATEM,
+        deviceId: 'atem0',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        mappingType: timeline_state_resolver_types_1.MappingAtemType.Auxilliary,
+        index: 5
+    }),
+    'atem_aux_screen': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.ATEM,
+        deviceId: 'atem0',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        mappingType: timeline_state_resolver_types_1.MappingAtemType.Auxilliary,
+        index: 3
+    }),
+    'atem_dsk_graphics': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.ATEM,
+        deviceId: 'atem0',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        mappingType: timeline_state_resolver_types_1.MappingAtemType.DownStreamKeyer,
+        index: 0 // 0 = DSK1
+    }),
+    'atem_dsk_effect': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.ATEM,
+        deviceId: 'atem0',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        mappingType: timeline_state_resolver_types_1.MappingAtemType.DownStreamKeyer,
+        index: 1 // 1 = DSK2
+    }),
+    'atem_supersource_art': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.ATEM,
+        deviceId: 'atem0',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        mappingType: timeline_state_resolver_types_1.MappingAtemType.SuperSourceProperties,
+        index: 0 // 0 = SS
+    }),
+    'atem_supersource_default': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.ATEM,
+        deviceId: 'atem0',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        mappingType: timeline_state_resolver_types_1.MappingAtemType.SuperSourceBox,
+        index: 0 // 0 = SS
+    }),
+    'atem_supersource_override': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.ATEM,
+        deviceId: 'atem0',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.WHEN_CLEAR,
+        mappingType: timeline_state_resolver_types_1.MappingAtemType.SuperSourceBox,
+        index: 0 // 0 = SS
+    }),
+    'lawo_source_automix': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.LAWO,
+        deviceId: 'lawo0',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        mappingType: timeline_state_resolver_types_1.MappingLawoType.SOURCE,
+        identifier: 'AMix'
+    }),
+    'lawo_source_clip_stk': util_1.literal({
+        device: timeline_state_resolver_types_1.DeviceType.LAWO,
+        deviceId: 'lawo0',
+        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
+        mappingType: timeline_state_resolver_types_1.MappingLawoType.SOURCE,
+        identifier: 'STK'
+    })
+});
+function getHyperdeckMappings(count) {
+    const res = {};
+    for (let i = 0; i < count; i++) {
+        const id = layers_1.HyperdeckLLayer(i);
+        res[id] = util_1.literal({
+            device: timeline_state_resolver_types_1.DeviceType.HYPERDECK,
+            deviceId: id,
+            mappingType: timeline_state_resolver_types_1.MappingHyperdeckType.TRANSPORT,
+            lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE
+        });
+    }
+    return res;
+}
+exports.getHyperdeckMappings = getHyperdeckMappings;
+
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(3);
+const util_1 = __webpack_require__(0);
+const layers_1 = __webpack_require__(5);
+exports.default = util_1.literal([
+    {
+        _id: layers_1.SourceLayer.PgmClip,
+        _rank: 9000,
+        name: 'VT',
+        abbreviation: 'VT',
+        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.VT,
+        activateKeyboardHotkeys: 'f7,f8',
+        onPresenterScreen: true,
+        exclusiveGroup: 'fullscreen_pgm'
+    },
+    {
+        _id: layers_1.SourceLayer.PgmGraphicsSuper,
+        _rank: 1000,
+        name: 'Super',
+        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.GRAPHICS,
+        activateKeyboardHotkeys: 'q,w,e,r,t,y',
+        clearKeyboardHotkey: 'u,alt+j,alt+u',
+        allowDisable: true
+    },
+    {
+        _id: layers_1.SourceLayer.PgmSplit,
+        _rank: 11000,
+        name: 'Split',
+        abbreviation: 'DVE',
+        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.SPLITS,
+        isSticky: true,
+        activateStickyKeyboardHotkey: 'f6',
+        onPresenterScreen: true,
+        exclusiveGroup: 'fullscreen_pgm'
+    },
+    {
+        _id: layers_1.SourceLayer.PgmRemote,
+        _rank: 10000,
+        name: 'DIR',
+        abbreviation: 'DIR',
+        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.REMOTE,
+        activateKeyboardHotkeys: '1,2,3,4,5,6',
+        isRemoteInput: true,
+        assignHotkeysToGlobalAdlibs: true,
+        isSticky: true,
+        activateStickyKeyboardHotkey: 'f5',
+        onPresenterScreen: true,
+        exclusiveGroup: 'fullscreen_pgm'
+    },
+    {
+        _id: layers_1.SourceLayer.PgmScript,
+        _rank: 14000,
+        name: 'Manus',
+        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.SCRIPT
+    },
+    {
+        _id: layers_1.SourceLayer.PgmCam,
+        _rank: 13000,
+        name: 'Cam',
+        abbreviation: 'C ',
+        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.CAMERA,
+        activateKeyboardHotkeys: 'f1,f2,f3,f4,8,9',
+        assignHotkeysToGlobalAdlibs: true,
+        onPresenterScreen: true,
+        exclusiveGroup: 'fullscreen_pgm'
+    },
+    {
+        _id: layers_1.SourceLayer.PgmTransition,
+        _rank: 0,
+        name: 'Transition',
+        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.TRANSITION,
+        activateKeyboardHotkeys: '',
+        assignHotkeysToGlobalAdlibs: false
+    },
+    {
+        _id: layers_1.SourceLayer.PgmHyperdeck,
+        _rank: 0,
+        name: 'Hyperdeck',
+        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.UNKNOWN,
+        activateKeyboardHotkeys: '',
+        assignHotkeysToGlobalAdlibs: false,
+        isHidden: true
+    },
+    {
+        _id: layers_1.SourceLayer.PgmAudioBed,
+        _rank: 0,
+        name: 'Bed',
+        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.AUDIO,
+        activateKeyboardHotkeys: '',
+        assignHotkeysToGlobalAdlibs: false,
+        isHidden: true
+    }
+]);
+
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const util_1 = __webpack_require__(0);
+exports.default = util_1.literal([
+    {
+        _id: 'pgm0',
+        name: 'PGM',
+        isPGM: true,
+        _rank: 0
+    },
+    {
+        _id: 'monitor0',
+        name: 'BAK',
+        isPGM: false,
+        _rank: 1
+    },
+    {
+        _id: 'screen1',
+        name: 'Screen 1',
+        isPGM: false,
+        _rank: 2
+    },
+    {
+        _id: 'screen2',
+        name: 'Screen 2',
+        isPGM: false,
+        _rank: 2
+    },
+    {
+        _id: 'screen3',
+        name: 'Screen 3',
+        isPGM: false,
+        _rank: 2
+    }
+]);
+
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const util_1 = __webpack_require__(0);
+exports.default = util_1.literal([
+    {
+        _id: 'x-mix-10',
+        label: 'Dissolve 10f',
+        hotkeys: 'x',
+        property: 'transition-mix',
+        value: '10'
+    }
+]);
+
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const _ = __webpack_require__(1);
+const timeline_state_resolver_types_1 = __webpack_require__(2);
+const util_1 = __webpack_require__(0);
+function validateDevice(spec) {
+    return {
+        id: `Playout-gateway.${spec.id}.validate`,
+        version: "0.1.0-0.1.0-5-gc5c89e3",
+        canBeRunAutomatically: false,
+        validate: (context) => {
+            const dev = context.getDevice(spec.id); // Device Default Value ( PlayoutDeviceOptions ) is a device's context
+            if (!dev)
+                return false;
+            if (dev.type !== spec.type)
+                return `Type is not "${timeline_state_resolver_types_1.DeviceType[spec.type]}"`;
+            if (spec.validate) {
+                return spec.validate(dev); // We check our Device from Context.
+                // Confirms properties needed to connect to device
+            }
+            return false;
+        },
+        input: [{
+                label: `Playout-gateway: device "${spec.id}" misconfigured`,
+                description: `Go into the settings of the Playout-gateway and setup the device "${spec.id}". ($validation)`,
+                inputType: null,
+                attribute: null
+            }]
+    };
+}
+function createDevice(spec) {
+    return {
+        id: `Playout-gateway.${spec.id}.create`,
+        version: spec.firstVersion,
+        canBeRunAutomatically: spec.input === undefined,
+        validate: (context) => {
+            if (spec.createCondition && !spec.createCondition(context))
+                return false;
+            const dev = context.getDevice(spec.id);
+            if (!dev)
+                return `"${spec.id}" missing`;
+            return false;
+        },
+        migrate: (context, input) => {
+            if (spec.createCondition && !spec.createCondition(context))
+                return;
+            const dev = context.getDevice(spec.id);
+            if (!dev) {
+                let options = spec.defaultValue(input, context);
+                if (options) {
+                    context.insertDevice(spec.id, options);
+                }
+            }
+        },
+        input: spec.input,
+        dependOnResultFrom: spec.createDependsOn
+    };
+}
+const devices = [
+    {
+        id: 'abstract0',
+        firstVersion: '0.1.0',
+        type: timeline_state_resolver_types_1.DeviceType.ABSTRACT,
+        defaultValue: () => ({
+            type: timeline_state_resolver_types_1.DeviceType.ABSTRACT,
+            options: {}
+        })
+    },
+    {
+        id: 'caspar01',
+        firstVersion: '0.1.0',
+        type: timeline_state_resolver_types_1.DeviceType.CASPARCG,
+        defaultValue: (input) => ({
+            type: timeline_state_resolver_types_1.DeviceType.CASPARCG,
+            options: {
+                host: input.host,
+                port: 5250,
+                launcherHost: input.host,
+                launcherPort: 8005
+            }
+        }),
+        input: [{
+                label: 'Device config caspar01: Host',
+                description: 'Enter the Host paramter, example: "127.0.0.1"',
+                inputType: 'text',
+                attribute: 'host',
+                defaultValue: undefined
+            }],
+        validate: device => {
+            if (!device.options)
+                return 'Missing options';
+            const opts = device.options;
+            if (!opts.host)
+                return 'Host is not set';
+            if (!opts.launcherHost)
+                return 'Launcher host is not set';
+            return false;
+        },
+        createDependsOn: 'studioConfig.DevicePrefix'
+    },
+    {
+        id: 'caspar01-launcher',
+        firstVersion: '0.1.0',
+        type: timeline_state_resolver_types_1.DeviceType.HTTPWATCHER,
+        defaultValue: (_input, context) => {
+            const mainDev = context.getDevice('caspar01');
+            if (mainDev && mainDev.options) {
+                const mainOpts = mainDev.options;
+                if (mainOpts.launcherHost) {
+                    return {
+                        type: timeline_state_resolver_types_1.DeviceType.HTTPWATCHER,
+                        options: {
+                            uri: `http://${mainOpts.launcherHost}:${mainOpts.launcherPort || 8005}/processes`,
+                            httpMethod: 'GET',
+                            expectedHttpResponse: 200,
+                            interval: 30000
+                        }
+                    };
+                }
+            }
+            return undefined;
+        },
+        validate: device => {
+            if (!device.options)
+                return 'Missing options';
+            const opts = device.options;
+            if (!opts.uri)
+                return 'URI is not set';
+            if (!opts.httpMethod)
+                return 'HTTP Method is not set';
+            if (!opts.expectedHttpResponse)
+                return 'Expected response is not set';
+            if (!opts.interval)
+                return 'Inteval is not set';
+            return false;
+        },
+        createDependsOn: 'Playout-gateway.caspar01.create'
+    },
+    {
+        id: 'caspar01-scanner',
+        firstVersion: '0.1.0',
+        type: timeline_state_resolver_types_1.DeviceType.HTTPWATCHER,
+        defaultValue: (_input, context) => {
+            const mainDev = context.getDevice('caspar01');
+            if (mainDev && mainDev.options) {
+                const mainOpts = mainDev.options;
+                if (mainOpts.launcherHost) {
+                    return {
+                        type: timeline_state_resolver_types_1.DeviceType.HTTPWATCHER,
+                        options: {
+                            uri: `http://${mainOpts.host}:8000/stat/seq`,
+                            httpMethod: 'GET',
+                            expectedHttpResponse: 200,
+                            interval: 30000
+                        }
+                    };
+                }
+            }
+            return undefined;
+        },
+        validate: device => {
+            if (!device.options)
+                return 'Missing options';
+            const opts = device.options;
+            if (!opts.uri)
+                return 'URI is not set';
+            if (!opts.httpMethod)
+                return 'HTTP Method is not set';
+            if (!opts.expectedHttpResponse)
+                return 'Expected response is not set';
+            if (!opts.interval)
+                return 'Inteval is not set';
+            return false;
+        },
+        createDependsOn: 'Playout-gateway.caspar01.create'
+    },
+    {
+        id: 'atem0',
+        firstVersion: '0.1.0',
+        type: timeline_state_resolver_types_1.DeviceType.ATEM,
+        defaultValue: (input) => ({
+            type: timeline_state_resolver_types_1.DeviceType.ATEM,
+            options: {
+                host: input.host,
+                port: 9910
+            }
+        }),
+        input: [{
+                label: 'Device config atem0: Host',
+                description: 'Enter the Host paramter, example: "127.0.0.1"',
+                inputType: 'text',
+                attribute: 'host',
+                defaultValue: undefined
+            }],
+        validate: device => {
+            if (!device.options)
+                return 'Missing options';
+            const opts = device.options;
+            if (!opts.host)
+                return 'Host is not set';
+            return false;
+        }
+    },
+    {
+        id: 'http0',
+        firstVersion: '0.1.0',
+        type: timeline_state_resolver_types_1.DeviceType.HTTPSEND,
+        defaultValue: () => ({
+            type: timeline_state_resolver_types_1.DeviceType.HTTPSEND,
+            options: {
+                makeReadyCommands: []
+            }
+        })
+    },
+    {
+        id: 'hyperdeck0',
+        firstVersion: '0.1.0',
+        type: timeline_state_resolver_types_1.DeviceType.HYPERDECK,
+        defaultValue: (input) => ({
+            type: timeline_state_resolver_types_1.DeviceType.HYPERDECK,
+            options: {
+                host: input.host,
+                port: 9993
+            }
+        }),
+        input: [{
+                label: 'Device config hyperdeck0: Host',
+                description: 'Enter the Host paramter, example: "127.0.0.1"',
+                inputType: 'text',
+                attribute: 'host',
+                defaultValue: undefined
+            }],
+        validate: device => {
+            if (!device.options)
+                return 'Missing options';
+            const opts = device.options;
+            if (!opts.host)
+                return 'Host is not set';
+            return false;
+        }
+    }
+];
+exports.deviceMigrations = util_1.literal([
+    // create all devices
+    ..._.map(devices, createDevice),
+    // ensureMakeReadyIsUpToDate('http0', 'nora-reset-stage', () => ({})),
+    // ensure all devices still look valid
+    ..._.map(devices, validateDevice)
+]);
+// function ensureMakeReadyIsUpToDate (deviceId: string, cmdId: string, getExpectedCommand: (context: MigrationContextStudio, deviceId: string, cmdId: string) => any) {
+// 	return literal<MigrationStepStudio>({
+// 		id: `Playout-gateway.${deviceId}.make-ready.${cmdId}`,
+// 		version: VERSION, // Always run to ensure up-to-date
+// 		dependOnResultFrom: `Playout-gateway.${deviceId}.create`,
+// 		canBeRunAutomatically: true,
+// 		validate: (context: MigrationContextStudio) => {
+// 			const expected = getExpectedCommand(context, deviceId, cmdId)
+// 			if (!expected) return false
+// 			const dev = context.getDevice(deviceId)
+// 			if (!dev) return `"${deviceId}" missing`
+// 			const opts = dev.options as any
+// 			if (!opts || !opts.makeReadyCommands || opts.makeReadyCommands.length === 0) return `"${deviceId}" missing ${cmdId}`
+// 			const cmd = opts.makeReadyCommands.find((c: any) => c.id === cmdId)
+// 			if (!cmd) return `"${deviceId}" missing ${cmdId}`
+// 			if (!_.isEqual(cmd, expected)) return `"${deviceId}" ${cmdId}: current value does not match expected`
+// 			return false
+// 		},
+// 		migrate: (context: MigrationContextStudio) => {
+// 			const dev = context.getDevice(deviceId)
+// 			const expected = getExpectedCommand(context, deviceId, cmdId)
+// 			if (dev && expected) {
+// 				const opts = dev.options as any
+// 				if (!opts.makeReadyCommands) opts.makeReadyCommands = []
+// 				const i = opts.makeReadyCommands.findIndex((c: any) => c.id === cmdId)
+// 				if (i === -1) {
+// 					opts.makeReadyCommands.push(expected)
+// 				} else {
+// 					opts.makeReadyCommands[i] = expected
+// 				}
+// 				context.updateDevice(deviceId, { options: opts })
+// 			}
+// 		}
+// 	})
+// }
+
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const _ = __webpack_require__(1);
+const util_1 = __webpack_require__(0);
+exports.showVariants = util_1.literal({
+    oddasat: {
+        name: 'Main'
+    }
+});
+function getCreateVariantMigrationSteps() {
+    return _.keys(exports.showVariants).map((key) => {
+        return util_1.literal({
+            id: `variant.${key}`,
+            version: "0.1.0-0.1.0-5-gc5c89e3",
+            canBeRunAutomatically: true,
+            validate: (context) => {
+                const variant = context.getVariant(key);
+                if (!variant)
+                    return `Variant "${key}" doesn't exist`;
+                return false;
+            },
+            migrate: (context) => {
+                const variant = context.getVariant(key);
+                if (!variant) {
+                    const region = exports.showVariants[key];
+                    context.insertVariant(key, {
+                        name: region.name
+                    });
+                    // Set/update config fields here
+                    // context.setVariantConfig(key, 'RegionCode', region.regionCode)
+                }
+            }
+        });
+    });
+}
+exports.getCreateVariantMigrationSteps = getCreateVariantMigrationSteps;
+
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const _ = __webpack_require__(1);
+const objectPath = __webpack_require__(41);
+const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(3);
+const config_manifests_1 = __webpack_require__(6);
 function parseConfig(context) {
     const applyToConfig = (config, manifest, sourceName, overrides) => {
         _.each(manifest, (val) => {
@@ -1586,7 +2589,7 @@ exports.parseConfig = parseConfig;
 
 
 /***/ }),
-/* 32 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory){
@@ -1884,21 +2887,21 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 33 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _ = __webpack_require__(0);
-const classes_1 = __webpack_require__(29);
-const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(2);
-const util_1 = __webpack_require__(1);
+const _ = __webpack_require__(1);
+const classes_1 = __webpack_require__(31);
+const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(3);
+const util_1 = __webpack_require__(0);
 const layers_1 = __webpack_require__(5);
-const timeline_state_resolver_types_1 = __webpack_require__(3);
-const content_1 = __webpack_require__(34);
-const sources_1 = __webpack_require__(27);
-const timeline_1 = __webpack_require__(36);
+const timeline_state_resolver_types_1 = __webpack_require__(2);
+const content_1 = __webpack_require__(43);
+const sources_1 = __webpack_require__(29);
+const timeline_1 = __webpack_require__(45);
 /**
  * Creates a generic adLib piece.
  * @param {Piece} piece Piece properties.
@@ -1923,8 +2926,9 @@ exports.CreatePieceGenericAdLib = CreatePieceGenericAdLib;
  * @param {Piece} piece Piece properties.
  */
 function CreatePieceGenericEnable(piece) {
-    let enable = {};
-    enable.start = piece.objectTime || 0;
+    let enable = {
+        start: piece.objectTime || 0
+    };
     let p = util_1.literal({
         _id: '',
         externalId: piece.id,
@@ -2329,15 +3333,15 @@ function checkAndPlaceOnScreen(p, attr) {
 
 
 /***/ }),
-/* 34 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _ = __webpack_require__(0);
-const sources_1 = __webpack_require__(27);
-const studio_1 = __webpack_require__(35);
+const _ = __webpack_require__(1);
+const sources_1 = __webpack_require__(29);
+const studio_1 = __webpack_require__(44);
 /**
  * Creates a base camera content.
  */
@@ -2396,7 +3400,7 @@ exports.CreateContentRemote = CreateContentRemote;
 
 
 /***/ }),
-/* 35 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2417,14 +3421,14 @@ exports.getStudioName = getStudioName;
 
 
 /***/ }),
-/* 36 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const util_1 = __webpack_require__(1);
-const timeline_state_resolver_types_1 = __webpack_require__(3);
+const util_1 = __webpack_require__(0);
+const timeline_state_resolver_types_1 = __webpack_require__(2);
 const layers_1 = __webpack_require__(5);
 /**
  * Creates an enable object for a timeline object.
@@ -2537,1016 +3541,50 @@ exports.CreateCCGMediaTimelineObject = CreateCCGMediaTimelineObject;
 
 
 /***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(2);
-const config_manifests_1 = __webpack_require__(30);
-const migrations_1 = __webpack_require__(38);
-const getRundown_1 = __webpack_require__(46);
-const getSegment_1 = __webpack_require__(48);
-const onAsRunEvent_1 = __webpack_require__(50);
-const manifest = {
-    blueprintType: tv_automation_sofie_blueprints_integration_1.BlueprintManifestType.SHOWSTYLE,
-    blueprintVersion: "0.1.0-75fea19",
-    integrationVersion: "0.24.1",
-    TSRVersion: "3.2.0",
-    minimumCoreVersion: '1.0.0',
-    getShowStyleVariantId: getRundown_1.getShowStyleVariantId,
-    getRundown: getRundown_1.getRundown,
-    getSegment: getSegment_1.getSegment,
-    onAsRunEvent: onAsRunEvent_1.default,
-    studioConfigManifest: config_manifests_1.StudioConfigManifest,
-    showStyleConfigManifest: config_manifests_1.ShowStyleConfigManifest,
-    studioMigrations: migrations_1.studioMigrations,
-    showStyleMigrations: migrations_1.showStyleMigrations
-};
-exports.default = manifest;
-
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const util_1 = __webpack_require__(1);
-const util_2 = __webpack_require__(39);
-const devices_1 = __webpack_require__(44);
-const variants_defaults_1 = __webpack_require__(45);
-/**
- * Versions:
- * 0.1.0: Core 0.24.0
- */
-exports.studioMigrations = util_1.literal([
-    util_2.ensureStudioConfig('0.1.0', 'SourcesCam', null, 'text', 'Studio config: Camera mappings', 'Enter the Camera input mapping (example: "1:1,2:2,3:3,4:4"'),
-    ...devices_1.deviceMigrations,
-    // Fill in any mappings that did not exist before
-    // Note: These should only be run as the very final step of all migrations. otherwise they will add items too early, and confuse old migrations
-    ...util_2.getMappingsDefaultsMigrationSteps("0.1.0-75fea19")
-]);
-exports.showStyleMigrations = util_1.literal([
-    // Fill in any layers that did not exist before
-    // Note: These should only be run as the very final step of all migrations. otherwise they will add items too early, and confuse old migrations
-    ...variants_defaults_1.getCreateVariantMigrationSteps(),
-    ...util_2.getSourceLayerDefaultsMigrationSteps("0.1.0-75fea19"),
-    ...util_2.getOutputLayerDefaultsMigrationSteps("0.1.0-75fea19"),
-    ...util_2.getRuntimeArgumentsDefaultsMigrationSteps("0.1.0-75fea19")
-]);
-
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const _ = __webpack_require__(0);
-const util_1 = __webpack_require__(1);
-const mappings_defaults_1 = __webpack_require__(40);
-const sourcelayer_defaults_1 = __webpack_require__(41);
-const outputlayer_defaults_1 = __webpack_require__(42);
-const runtime_arguments_defaults_1 = __webpack_require__(43);
-const config_manifests_1 = __webpack_require__(30);
-function ensureStudioConfig(version, configName, value, // null if manual
-inputType, // EditAttribute types
-label, description, defaultValue, oldConfigName, dropdownOptions) {
-    return {
-        id: `studioConfig.${configName}`,
-        version: version,
-        canBeRunAutomatically: (_.isNull(value) ? false : true),
-        validate: (context) => {
-            let configVal = context.getConfig(configName);
-            let oldConfigVal = oldConfigName && context.getConfig(oldConfigName);
-            if (configVal === undefined && oldConfigVal === undefined) {
-                return `${configName} is missing`;
-            }
-            return false;
-        },
-        input: (context) => {
-            let inputs = [];
-            let configVal = context.getConfig(configName);
-            if (inputType && configVal === undefined) {
-                inputs.push({
-                    label: label,
-                    description: description,
-                    inputType: inputType,
-                    attribute: 'value',
-                    defaultValue: defaultValue,
-                    dropdownOptions: dropdownOptions
-                });
-            }
-            return inputs;
-        },
-        migrate: (context, input) => {
-            context.setConfig(configName, _.isNull(value) ? input.value : value);
-        }
-    };
-}
-exports.ensureStudioConfig = ensureStudioConfig;
-function renameStudioConfig(version, oldConfigName, newConfigName, updateValue) {
-    return {
-        id: `studioConfig.${oldConfigName}`,
-        version: version,
-        canBeRunAutomatically: true,
-        validate: (context) => {
-            const configVal = context.getConfig(oldConfigName);
-            if (configVal !== undefined) {
-                return `${oldConfigName} is defined`;
-            }
-            return false;
-        },
-        migrate: (context) => {
-            let configVal = context.getConfig(oldConfigName);
-            if (configVal !== undefined) {
-                context.setConfig(newConfigName, updateValue ? updateValue(configVal) : configVal);
-                context.removeConfig(oldConfigName);
-            }
-        }
-    };
-}
-exports.renameStudioConfig = renameStudioConfig;
-function renameMapping(version, oldMappingName, newMappingName) {
-    return {
-        id: `studioMapping.${oldMappingName}`,
-        version: version,
-        canBeRunAutomatically: true,
-        validate: (context) => {
-            const mapping = context.getMapping(oldMappingName);
-            if (mapping !== undefined) {
-                return `${oldMappingName} is defined`;
-            }
-            return false;
-        },
-        migrate: (context) => {
-            const mapping = context.getMapping(oldMappingName);
-            if (mapping) {
-                context.insertMapping(newMappingName, mapping);
-                context.removeMapping(oldMappingName);
-            }
-        }
-    };
-}
-exports.renameMapping = renameMapping;
-function removeMapping(version, oldMappingName) {
-    return {
-        id: `studioMapping.${oldMappingName}`,
-        version: version,
-        canBeRunAutomatically: true,
-        validate: (context) => {
-            const mapping = context.getMapping(oldMappingName);
-            if (mapping) {
-                return `${oldMappingName} is defined`;
-            }
-            return false;
-        },
-        migrate: (context) => {
-            const mapping = context.getMapping(oldMappingName);
-            if (mapping) {
-                context.removeMapping(oldMappingName);
-            }
-        }
-    };
-}
-exports.removeMapping = removeMapping;
-function getMappingsDefaultsMigrationSteps(versionStr) {
-    const res = _.compact(_.map(mappings_defaults_1.default, (defaultVal, id) => {
-        return util_1.literal({
-            id: `mappings.defaults.${id}`,
-            version: versionStr,
-            canBeRunAutomatically: true,
-            validate: (context) => {
-                // Optional mappings based on studio settings can be dropped here
-                if (!context.getMapping(id))
-                    return `Mapping "${id}" doesn't exist on ShowBaseStyle`;
-                return false;
-            },
-            migrate: (context) => {
-                if (!context.getMapping(id)) {
-                    context.insertMapping(id, defaultVal);
-                }
-            }
-        });
-    }));
-    let hyperdeckCount = (context) => {
-        const configCount = context.getConfig('HyperdeckCount');
-        if (typeof configCount === 'number') {
-            return configCount;
-        }
-        else {
-            const defaultVal = config_manifests_1.StudioConfigManifest.find(c => c.id === 'HyperdeckCount');
-            if (defaultVal === undefined) {
-                throw new Error('Expected HyperdeckCount to be defined in StudioConfigManifest');
-            }
-            else {
-                return defaultVal.defaultVal;
-            }
-        }
-    };
-    res.push(util_1.literal({
-        id: `mappings.defaults._all_hyperdeck_`,
-        version: versionStr,
-        canBeRunAutomatically: true,
-        dependOnResultFrom: 'studioConfig.HyperdeckCount',
-        validate: (context) => {
-            const expected = _.keys(mappings_defaults_1.getHyperdeckMappings(hyperdeckCount(context)));
-            let mappingMissing = false;
-            _.each(expected, f => {
-                if (!context.getMapping(f)) {
-                    mappingMissing = `${f} is missing`;
-                }
-            });
-            return mappingMissing;
-        },
-        migrate: (context) => {
-            const expected = mappings_defaults_1.getHyperdeckMappings(hyperdeckCount(context));
-            _.each(expected, (v, k) => {
-                if (!context.getMapping(k)) {
-                    context.insertMapping(k, v);
-                }
-            });
-        }
-    }));
-    return res;
-}
-exports.getMappingsDefaultsMigrationSteps = getMappingsDefaultsMigrationSteps;
-function getSourceLayerDefaultsMigrationSteps(versionStr) {
-    return _.compact(_.map(sourcelayer_defaults_1.default, (defaultVal) => {
-        return util_1.literal({
-            id: `sourcelayer.defaults.${defaultVal._id}`,
-            version: versionStr,
-            canBeRunAutomatically: true,
-            validate: (context) => {
-                if (!context.getSourceLayer(defaultVal._id))
-                    return `SourceLayer "${defaultVal._id}" doesn't exist on ShowBaseStyle`;
-                return false;
-            },
-            migrate: (context) => {
-                if (!context.getSourceLayer(defaultVal._id)) {
-                    context.insertSourceLayer(defaultVal._id, defaultVal);
-                }
-            }
-        });
-    }));
-}
-exports.getSourceLayerDefaultsMigrationSteps = getSourceLayerDefaultsMigrationSteps;
-function getOutputLayerDefaultsMigrationSteps(versionStr) {
-    return _.compact(_.map(outputlayer_defaults_1.default, (defaultVal) => {
-        return util_1.literal({
-            id: `outputlayer.defaults.${defaultVal._id}`,
-            version: versionStr,
-            canBeRunAutomatically: true,
-            validate: (context) => {
-                if (!context.getOutputLayer(defaultVal._id))
-                    return `OutputLayer "${defaultVal._id}" doesn't exist on ShowBaseStyle`;
-                return false;
-            },
-            migrate: (context) => {
-                if (!context.getOutputLayer(defaultVal._id)) {
-                    context.insertOutputLayer(defaultVal._id, defaultVal);
-                }
-            }
-        });
-    }));
-}
-exports.getOutputLayerDefaultsMigrationSteps = getOutputLayerDefaultsMigrationSteps;
-function getRuntimeArgumentsDefaultsMigrationSteps(versionStr) {
-    return _.compact(_.map(runtime_arguments_defaults_1.default, (defaultVal) => {
-        return util_1.literal({
-            id: `runtimeArguments.defaults.${defaultVal._id}`,
-            version: versionStr,
-            canBeRunAutomatically: true,
-            validate: (context) => {
-                if (!context.getRuntimeArgument(defaultVal._id))
-                    return `RuntimeArgument "${defaultVal._id}" doesn't exist on ShowBaseStyle`;
-                return false;
-            },
-            migrate: (context) => {
-                if (!context.getRuntimeArgument(defaultVal._id)) {
-                    context.insertRuntimeArgument(defaultVal._id, defaultVal);
-                }
-            }
-        });
-    }));
-}
-exports.getRuntimeArgumentsDefaultsMigrationSteps = getRuntimeArgumentsDefaultsMigrationSteps;
-
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const timeline_state_resolver_types_1 = __webpack_require__(3);
-const util_1 = __webpack_require__(1);
-const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(2);
-const layers_1 = __webpack_require__(5);
-exports.default = util_1.literal({
-    'core_abstract': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.ABSTRACT,
-        deviceId: 'abstract0',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE
-    }),
-    'casparcg_player_wipe': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
-        deviceId: 'caspar01',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        channel: 3,
-        layer: 199
-    }),
-    'casparcg_player_soundeffect': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
-        deviceId: 'caspar01',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        channel: 3,
-        layer: 130
-    }),
-    'casparcg_player_clip_next_warning': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
-        deviceId: 'caspar01',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        channel: 4,
-        layer: 99
-    }),
-    'casparcg_player_clip': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
-        deviceId: 'caspar01',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.PRELOAD,
-        channel: 1,
-        layer: 111
-    }),
-    'casparcg_player_clip_next': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
-        deviceId: 'caspar01',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        channel: 4,
-        layer: 101
-    }),
-    'casparcg_player_clip_next_custom': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
-        deviceId: 'caspar01',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        channel: 4,
-        layer: 110
-    }),
-    'casparcg_cg_graphics': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
-        deviceId: 'caspar02',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        channel: 2,
-        layer: 120
-    }),
-    'casparcg_cg_countdown': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
-        deviceId: 'caspar02',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        channel: 1,
-        layer: 120
-    }),
-    'casparcg_cg_effects': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.CASPARCG,
-        deviceId: 'caspar01',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        channel: 3,
-        layer: 120
-    }),
-    'atem_me_program': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.ATEM,
-        deviceId: 'atem0',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        mappingType: timeline_state_resolver_types_1.MappingAtemType.MixEffect,
-        index: 0 // 0 = ME1
-    }),
-    'atem_aux_lookahead': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.ATEM,
-        deviceId: 'atem0',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.WHEN_CLEAR,
-        mappingType: timeline_state_resolver_types_1.MappingAtemType.Auxilliary,
-        index: 1
-    }),
-    'atem_aux_ssrc': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.ATEM,
-        deviceId: 'atem0',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        mappingType: timeline_state_resolver_types_1.MappingAtemType.Auxilliary,
-        index: 2
-    }),
-    'atem_aux_clean': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.ATEM,
-        deviceId: 'atem0',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        mappingType: timeline_state_resolver_types_1.MappingAtemType.Auxilliary,
-        index: 5
-    }),
-    'atem_aux_screen': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.ATEM,
-        deviceId: 'atem0',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        mappingType: timeline_state_resolver_types_1.MappingAtemType.Auxilliary,
-        index: 3
-    }),
-    'atem_dsk_graphics': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.ATEM,
-        deviceId: 'atem0',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        mappingType: timeline_state_resolver_types_1.MappingAtemType.DownStreamKeyer,
-        index: 0 // 0 = DSK1
-    }),
-    'atem_dsk_effect': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.ATEM,
-        deviceId: 'atem0',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        mappingType: timeline_state_resolver_types_1.MappingAtemType.DownStreamKeyer,
-        index: 1 // 1 = DSK2
-    }),
-    'atem_supersource_art': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.ATEM,
-        deviceId: 'atem0',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        mappingType: timeline_state_resolver_types_1.MappingAtemType.SuperSourceProperties,
-        index: 0 // 0 = SS
-    }),
-    'atem_supersource_default': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.ATEM,
-        deviceId: 'atem0',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        mappingType: timeline_state_resolver_types_1.MappingAtemType.SuperSourceBox,
-        index: 0 // 0 = SS
-    }),
-    'atem_supersource_override': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.ATEM,
-        deviceId: 'atem0',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.RETAIN,
-        mappingType: timeline_state_resolver_types_1.MappingAtemType.SuperSourceBox,
-        index: 0 // 0 = SS
-    }),
-    'lawo_source_automix': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.LAWO,
-        deviceId: 'lawo0',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        mappingType: timeline_state_resolver_types_1.MappingLawoType.SOURCE,
-        identifier: 'AMix'
-    }),
-    'lawo_source_clip_stk': util_1.literal({
-        device: timeline_state_resolver_types_1.DeviceType.LAWO,
-        deviceId: 'lawo0',
-        lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE,
-        mappingType: timeline_state_resolver_types_1.MappingLawoType.SOURCE,
-        identifier: 'STK'
-    })
-});
-function getHyperdeckMappings(count) {
-    const res = {};
-    for (let i = 0; i < count; i++) {
-        const id = layers_1.HyperdeckLLayer(i);
-        res[id] = util_1.literal({
-            device: timeline_state_resolver_types_1.DeviceType.HYPERDECK,
-            deviceId: id,
-            mappingType: timeline_state_resolver_types_1.MappingHyperdeckType.TRANSPORT,
-            lookahead: tv_automation_sofie_blueprints_integration_1.LookaheadMode.NONE
-        });
-    }
-    return res;
-}
-exports.getHyperdeckMappings = getHyperdeckMappings;
-
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(2);
-const util_1 = __webpack_require__(1);
-const layers_1 = __webpack_require__(5);
-exports.default = util_1.literal([
-    {
-        _id: layers_1.SourceLayer.PgmClip,
-        _rank: 9000,
-        name: 'VT',
-        abbreviation: 'VT',
-        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.VT,
-        activateKeyboardHotkeys: 'f7,f8',
-        onPGMClean: true,
-        onPresenterScreen: true,
-        unlimited: false,
-        exclusiveGroup: 'fullscreen_pgm'
-    },
-    {
-        _id: layers_1.SourceLayer.PgmGraphicsSuper,
-        _rank: 1000,
-        name: 'Super',
-        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.GRAPHICS,
-        onPGMClean: false,
-        activateKeyboardHotkeys: 'q,w,e,r,t,y',
-        clearKeyboardHotkey: 'u,alt+j,alt+u',
-        allowDisable: true,
-        unlimited: false
-    },
-    {
-        _id: layers_1.SourceLayer.PgmSplit,
-        _rank: 11000,
-        name: 'Split',
-        abbreviation: 'DVE',
-        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.SPLITS,
-        onPGMClean: true,
-        isSticky: true,
-        activateStickyKeyboardHotkey: 'f6',
-        onPresenterScreen: true,
-        unlimited: false,
-        exclusiveGroup: 'fullscreen_pgm'
-    },
-    {
-        _id: layers_1.SourceLayer.PgmRemote,
-        _rank: 10000,
-        name: 'DIR',
-        abbreviation: 'DIR',
-        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.REMOTE,
-        onPGMClean: true,
-        activateKeyboardHotkeys: '1,2,3,4,5,6',
-        isRemoteInput: true,
-        assignHotkeysToGlobalAdlibs: true,
-        isSticky: true,
-        activateStickyKeyboardHotkey: 'f5',
-        onPresenterScreen: true,
-        unlimited: false,
-        exclusiveGroup: 'fullscreen_pgm'
-    },
-    {
-        _id: layers_1.SourceLayer.PgmScript,
-        _rank: 14000,
-        name: 'Manus',
-        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.SCRIPT,
-        onPGMClean: true,
-        unlimited: false
-    },
-    {
-        _id: layers_1.SourceLayer.PgmCam,
-        _rank: 13000,
-        name: 'Cam',
-        abbreviation: 'C ',
-        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.CAMERA,
-        onPGMClean: true,
-        activateKeyboardHotkeys: 'f1,f2,f3,f4,8,9',
-        assignHotkeysToGlobalAdlibs: true,
-        onPresenterScreen: true,
-        unlimited: false,
-        exclusiveGroup: 'fullscreen_pgm'
-    },
-    {
-        _id: layers_1.SourceLayer.PgmTransition,
-        _rank: 0,
-        name: 'Transition',
-        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.TRANSITION,
-        onPGMClean: true,
-        activateKeyboardHotkeys: '',
-        assignHotkeysToGlobalAdlibs: false,
-        unlimited: false
-    },
-    {
-        _id: layers_1.SourceLayer.PgmHyperdeck,
-        _rank: 0,
-        name: 'Hyperdeck',
-        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.UNKNOWN,
-        onPGMClean: true,
-        activateKeyboardHotkeys: '',
-        assignHotkeysToGlobalAdlibs: false,
-        unlimited: false,
-        isHidden: true
-    },
-    {
-        _id: layers_1.SourceLayer.PgmAudioBed,
-        _rank: 0,
-        name: 'Bed',
-        type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.AUDIO,
-        onPGMClean: true,
-        activateKeyboardHotkeys: '',
-        assignHotkeysToGlobalAdlibs: false,
-        unlimited: false,
-        isHidden: true
-    }
-]);
-
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const util_1 = __webpack_require__(1);
-exports.default = util_1.literal([
-    {
-        _id: 'pgm0',
-        name: 'PGM',
-        isPGM: true,
-        _rank: 0
-    },
-    {
-        _id: 'monitor0',
-        name: 'BAK',
-        isPGM: false,
-        _rank: 1
-    },
-    {
-        _id: 'screen1',
-        name: 'Screen 1',
-        isPGM: false,
-        _rank: 2
-    },
-    {
-        _id: 'screen2',
-        name: 'Screen 2',
-        isPGM: false,
-        _rank: 2
-    },
-    {
-        _id: 'screen3',
-        name: 'Screen 3',
-        isPGM: false,
-        _rank: 2
-    }
-]);
-
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const util_1 = __webpack_require__(1);
-exports.default = util_1.literal([
-    {
-        _id: 'x-mix-10',
-        label: 'Dissolve 10f',
-        hotkeys: 'x',
-        property: 'transition-mix',
-        value: '10'
-    }
-]);
-
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const _ = __webpack_require__(0);
-const timeline_state_resolver_types_1 = __webpack_require__(3);
-const util_1 = __webpack_require__(1);
-function validateDevice(spec) {
-    return {
-        id: `Playout-gateway.${spec.id}.validate`,
-        version: "0.1.0-75fea19",
-        canBeRunAutomatically: false,
-        validate: (context) => {
-            const dev = context.getDevice(spec.id);
-            if (!dev)
-                return false;
-            if (dev.type !== spec.type)
-                return `Type is not "${timeline_state_resolver_types_1.DeviceType[spec.type]}"`;
-            if (spec.validate) {
-                return spec.validate(dev);
-            }
-            return false;
-        },
-        input: [{
-                label: `Playout-gateway: device "${spec.id}" misconfigured`,
-                description: `Go into the settings of the Playout-gateway and setup the device "${spec.id}". ($validation)`,
-                inputType: null,
-                attribute: null
-            }]
-    };
-}
-function createDevice(spec) {
-    return {
-        id: `Playout-gateway.${spec.id}.create`,
-        version: spec.firstVersion,
-        canBeRunAutomatically: spec.input === undefined,
-        validate: (context) => {
-            if (spec.createCondition && !spec.createCondition(context))
-                return false;
-            const dev = context.getDevice(spec.id);
-            if (!dev)
-                return `"${spec.id}" missing`;
-            return false;
-        },
-        migrate: (context, input) => {
-            if (spec.createCondition && !spec.createCondition(context))
-                return;
-            const dev = context.getDevice(spec.id);
-            if (!dev) {
-                let options = spec.defaultValue(input, context);
-                if (options) {
-                    context.insertDevice(spec.id, options);
-                }
-            }
-        },
-        input: spec.input,
-        dependOnResultFrom: spec.createDependsOn
-    };
-}
-const devices = [
-    {
-        id: 'abstract0',
-        firstVersion: '0.1.0',
-        type: timeline_state_resolver_types_1.DeviceType.ABSTRACT,
-        defaultValue: () => ({
-            type: timeline_state_resolver_types_1.DeviceType.ABSTRACT,
-            options: {}
-        })
-    },
-    {
-        id: 'caspar01',
-        firstVersion: '0.1.0',
-        type: timeline_state_resolver_types_1.DeviceType.CASPARCG,
-        defaultValue: (input) => ({
-            type: timeline_state_resolver_types_1.DeviceType.CASPARCG,
-            options: {
-                host: input.host,
-                port: 5250,
-                launcherHost: input.host,
-                launcherPort: 8005
-            }
-        }),
-        input: [{
-                label: 'Device config caspar01: Host',
-                description: 'Enter the Host paramter, example: "127.0.0.1"',
-                inputType: 'text',
-                attribute: 'host',
-                defaultValue: undefined
-            }],
-        validate: device => {
-            if (!device.options)
-                return 'Missing options';
-            const opts = device.options;
-            if (!opts.host)
-                return 'Host is not set';
-            if (!opts.launcherHost)
-                return 'Launcher host is not set';
-            return false;
-        },
-        createDependsOn: 'studioConfig.DevicePrefix'
-    },
-    {
-        id: 'caspar01-launcher',
-        firstVersion: '0.1.0',
-        type: timeline_state_resolver_types_1.DeviceType.HTTPWATCHER,
-        defaultValue: (_input, context) => {
-            const mainDev = context.getDevice('caspar01');
-            if (mainDev && mainDev.options) {
-                const mainOpts = mainDev.options;
-                if (mainOpts.launcherHost) {
-                    return {
-                        type: timeline_state_resolver_types_1.DeviceType.HTTPWATCHER,
-                        options: {
-                            uri: `http://${mainOpts.launcherHost}:${mainOpts.launcherPort || 8005}/processes`,
-                            httpMethod: 'GET',
-                            expectedHttpResponse: 200,
-                            interval: 30000
-                        }
-                    };
-                }
-            }
-            return undefined;
-        },
-        validate: device => {
-            if (!device.options)
-                return 'Missing options';
-            const opts = device.options;
-            if (!opts.uri)
-                return 'URI is not set';
-            if (!opts.httpMethod)
-                return 'HTTP Method is not set';
-            if (!opts.expectedHttpResponse)
-                return 'Expected response is not set';
-            if (!opts.interval)
-                return 'Inteval is not set';
-            return false;
-        },
-        createDependsOn: 'Playout-gateway.caspar01.create'
-    },
-    {
-        id: 'caspar01-scanner',
-        firstVersion: '0.1.0',
-        type: timeline_state_resolver_types_1.DeviceType.HTTPWATCHER,
-        defaultValue: (_input, context) => {
-            const mainDev = context.getDevice('caspar01');
-            if (mainDev && mainDev.options) {
-                const mainOpts = mainDev.options;
-                if (mainOpts.launcherHost) {
-                    return {
-                        type: timeline_state_resolver_types_1.DeviceType.HTTPWATCHER,
-                        options: {
-                            uri: `http://${mainOpts.host}:8000/stat/seq`,
-                            httpMethod: 'GET',
-                            expectedHttpResponse: 200,
-                            interval: 30000
-                        }
-                    };
-                }
-            }
-            return undefined;
-        },
-        validate: device => {
-            if (!device.options)
-                return 'Missing options';
-            const opts = device.options;
-            if (!opts.uri)
-                return 'URI is not set';
-            if (!opts.httpMethod)
-                return 'HTTP Method is not set';
-            if (!opts.expectedHttpResponse)
-                return 'Expected response is not set';
-            if (!opts.interval)
-                return 'Inteval is not set';
-            return false;
-        },
-        createDependsOn: 'Playout-gateway.caspar01.create'
-    },
-    {
-        id: 'atem0',
-        firstVersion: '0.1.0',
-        type: timeline_state_resolver_types_1.DeviceType.ATEM,
-        defaultValue: (input) => ({
-            type: timeline_state_resolver_types_1.DeviceType.ATEM,
-            options: {
-                host: input.host,
-                port: 9910
-            }
-        }),
-        input: [{
-                label: 'Device config atem0: Host',
-                description: 'Enter the Host paramter, example: "127.0.0.1"',
-                inputType: 'text',
-                attribute: 'host',
-                defaultValue: undefined
-            }],
-        validate: device => {
-            if (!device.options)
-                return 'Missing options';
-            const opts = device.options;
-            if (!opts.host)
-                return 'Host is not set';
-            return false;
-        }
-    },
-    {
-        id: 'http0',
-        firstVersion: '0.1.0',
-        type: timeline_state_resolver_types_1.DeviceType.HTTPSEND,
-        defaultValue: () => ({
-            type: timeline_state_resolver_types_1.DeviceType.HTTPSEND,
-            options: {
-                makeReadyCommands: []
-            }
-        })
-    },
-    {
-        id: 'hyperdeck0',
-        firstVersion: '0.1.0',
-        type: timeline_state_resolver_types_1.DeviceType.HYPERDECK,
-        defaultValue: (input) => ({
-            type: timeline_state_resolver_types_1.DeviceType.HYPERDECK,
-            options: {
-                host: input.host,
-                port: 9993
-            }
-        }),
-        input: [{
-                label: 'Device config hyperdeck0: Host',
-                description: 'Enter the Host paramter, example: "127.0.0.1"',
-                inputType: 'text',
-                attribute: 'host',
-                defaultValue: undefined
-            }],
-        validate: device => {
-            if (!device.options)
-                return 'Missing options';
-            const opts = device.options;
-            if (!opts.host)
-                return 'Host is not set';
-            return false;
-        }
-    }
-];
-exports.deviceMigrations = util_1.literal([
-    // create all devices
-    ..._.map(devices, createDevice),
-    // ensureMakeReadyIsUpToDate('http0', 'nora-reset-stage', () => ({})),
-    // ensure all devices still look valid
-    ..._.map(devices, validateDevice)
-]);
-// function ensureMakeReadyIsUpToDate (deviceId: string, cmdId: string, getExpectedCommand: (context: MigrationContextStudio, deviceId: string, cmdId: string) => any) {
-// 	return literal<MigrationStepStudio>({
-// 		id: `Playout-gateway.${deviceId}.make-ready.${cmdId}`,
-// 		version: VERSION, // Always run to ensure up-to-date
-// 		dependOnResultFrom: `Playout-gateway.${deviceId}.create`,
-// 		canBeRunAutomatically: true,
-// 		validate: (context: MigrationContextStudio) => {
-// 			const expected = getExpectedCommand(context, deviceId, cmdId)
-// 			if (!expected) return false
-// 			const dev = context.getDevice(deviceId)
-// 			if (!dev) return `"${deviceId}" missing`
-// 			const opts = dev.options as any
-// 			if (!opts || !opts.makeReadyCommands || opts.makeReadyCommands.length === 0) return `"${deviceId}" missing ${cmdId}`
-// 			const cmd = opts.makeReadyCommands.find((c: any) => c.id === cmdId)
-// 			if (!cmd) return `"${deviceId}" missing ${cmdId}`
-// 			if (!_.isEqual(cmd, expected)) return `"${deviceId}" ${cmdId}: current value does not match expected`
-// 			return false
-// 		},
-// 		migrate: (context: MigrationContextStudio) => {
-// 			const dev = context.getDevice(deviceId)
-// 			const expected = getExpectedCommand(context, deviceId, cmdId)
-// 			if (dev && expected) {
-// 				const opts = dev.options as any
-// 				if (!opts.makeReadyCommands) opts.makeReadyCommands = []
-// 				const i = opts.makeReadyCommands.findIndex((c: any) => c.id === cmdId)
-// 				if (i === -1) {
-// 					opts.makeReadyCommands.push(expected)
-// 				} else {
-// 					opts.makeReadyCommands[i] = expected
-// 				}
-// 				context.updateDevice(deviceId, { options: opts })
-// 			}
-// 		}
-// 	})
-// }
-
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const _ = __webpack_require__(0);
-const util_1 = __webpack_require__(1);
-exports.showVariants = util_1.literal({
-    oddasat: {
-        name: 'Main'
-    }
-});
-function getCreateVariantMigrationSteps() {
-    return _.keys(exports.showVariants).map((key) => {
-        return util_1.literal({
-            id: `variant.${key}`,
-            version: "0.1.0-75fea19",
-            canBeRunAutomatically: true,
-            validate: (context) => {
-                const variant = context.getVariant(key);
-                if (!variant)
-                    return `Variant "${key}" doesn't exist`;
-                return false;
-            },
-            migrate: (context) => {
-                const variant = context.getVariant(key);
-                if (!variant) {
-                    const region = exports.showVariants[key];
-                    context.insertVariant(key, {
-                        name: region.name
-                    });
-                    // Set/update config fields here
-                    // context.setVariantConfig(key, 'RegionCode', region.regionCode)
-                }
-            }
-        });
-    });
-}
-exports.getCreateVariantMigrationSteps = getCreateVariantMigrationSteps;
-
-
-/***/ }),
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _ = __webpack_require__(0);
-const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(2);
-const atem_1 = __webpack_require__(28);
-const timeline_state_resolver_types_1 = __webpack_require__(3);
-const util_1 = __webpack_require__(1);
+const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(3);
+const config_manifests_1 = __webpack_require__(6);
+const migrations_1 = __webpack_require__(32);
+const getRundown_1 = __webpack_require__(47);
+const getSegment_1 = __webpack_require__(49);
+const onAsRunEvent_1 = __webpack_require__(51);
+const manifest = {
+    blueprintType: tv_automation_sofie_blueprints_integration_1.BlueprintManifestType.SHOWSTYLE,
+    blueprintVersion: "0.1.0-0.1.0-5-gc5c89e3",
+    integrationVersion: "1.10.0",
+    TSRVersion: "3.18.0",
+    minimumCoreVersion: '^1.0.0',
+    getShowStyleVariantId: getRundown_1.getShowStyleVariantId,
+    getRundown: getRundown_1.getRundown,
+    getSegment: getSegment_1.getSegment,
+    onAsRunEvent: onAsRunEvent_1.default,
+    showStyleConfigManifest: config_manifests_1.ShowStyleConfigManifest,
+    showStyleMigrations: migrations_1.showStyleMigrations
+};
+exports.default = manifest;
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const _ = __webpack_require__(1);
+const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(3);
+const atem_1 = __webpack_require__(30);
+const timeline_state_resolver_types_1 = __webpack_require__(2);
+const util_1 = __webpack_require__(0);
 const layers_1 = __webpack_require__(5);
-const constants_1 = __webpack_require__(47);
-const config_1 = __webpack_require__(31);
-const sources_1 = __webpack_require__(27);
+const constants_1 = __webpack_require__(48);
+const config_1 = __webpack_require__(40);
+const sources_1 = __webpack_require__(29);
 function getShowStyleVariantId(_context, showStyleVariants, _ingestRundown) {
     const variant = _.first(showStyleVariants);
     if (variant) {
@@ -3851,7 +3889,7 @@ function getBaseline(config) {
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3864,21 +3902,21 @@ var Constants;
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const objectPath = __webpack_require__(32);
-const util_1 = __webpack_require__(1);
+const objectPath = __webpack_require__(41);
+const util_1 = __webpack_require__(0);
 const layers_1 = __webpack_require__(5);
-const classes_1 = __webpack_require__(29);
-const timeline_state_resolver_types_1 = __webpack_require__(3);
-const config_1 = __webpack_require__(31);
-const sources_1 = __webpack_require__(27);
-const pieces_1 = __webpack_require__(33);
-const dve_1 = __webpack_require__(49);
+const classes_1 = __webpack_require__(31);
+const timeline_state_resolver_types_1 = __webpack_require__(2);
+const config_1 = __webpack_require__(40);
+const sources_1 = __webpack_require__(29);
+const pieces_1 = __webpack_require__(42);
+const dve_1 = __webpack_require__(50);
 function getSegment(context, ingestSegment) {
     const config = {
         context: context,
@@ -4243,24 +4281,24 @@ function transitionFromString(transition, defaultTransition) {
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _ = __webpack_require__(0);
-const classes_1 = __webpack_require__(29);
-const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(2);
-const timeline_state_resolver_types_1 = __webpack_require__(3);
-const util_1 = __webpack_require__(1);
-const content_1 = __webpack_require__(34);
-const studio_1 = __webpack_require__(35);
-const timeline_1 = __webpack_require__(36);
+const _ = __webpack_require__(1);
+const classes_1 = __webpack_require__(31);
+const tv_automation_sofie_blueprints_integration_1 = __webpack_require__(3);
+const timeline_state_resolver_types_1 = __webpack_require__(2);
+const util_1 = __webpack_require__(0);
+const content_1 = __webpack_require__(43);
+const studio_1 = __webpack_require__(44);
+const timeline_1 = __webpack_require__(45);
 const layers_1 = __webpack_require__(5);
-const sources_1 = __webpack_require__(27);
-const pieces_1 = __webpack_require__(33);
-const atem_1 = __webpack_require__(28);
+const sources_1 = __webpack_require__(29);
+const pieces_1 = __webpack_require__(42);
+const atem_1 = __webpack_require__(30);
 /**
  * Creates a DVE Piece.
  * @param {SegmentConf} config Segment config.
@@ -4292,7 +4330,7 @@ function createDVESourceConfigurations(config, pieces, sourceBoxes) {
         let newContent;
         switch (piece.objectType) {
             case classes_1.ObjectType.GRAPHIC:
-                newContent = util_1.literal(Object.assign({}, content_1.CreateContentGraphics(piece), {
+                newContent = util_1.literal(Object.assign(Object.assign({}, content_1.CreateContentGraphics(piece)), {
                     type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.GRAPHICS,
                     studioLabel: studio_1.getStudioName(config.context),
                     switcherInput: config.config.studio.AtemSource.Server2 // TODO: Get from Sofie.
@@ -4304,7 +4342,7 @@ function createDVESourceConfigurations(config, pieces, sourceBoxes) {
                 sourceBoxes[index].source = newContent.switcherInput;
                 break;
             case classes_1.ObjectType.VIDEO:
-                newContent = util_1.literal(Object.assign({}, content_1.CreateContentVT(piece), {
+                newContent = util_1.literal(Object.assign(Object.assign({}, content_1.CreateContentVT(piece)), {
                     type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.VT,
                     studioLabel: studio_1.getStudioName(config.context),
                     switcherInput: config.config.studio.AtemSource.Server1
@@ -4330,7 +4368,7 @@ function createDVESourceConfigurations(config, pieces, sourceBoxes) {
                 sourceBoxes[index].source = newContent.switcherInput;
                 break;
             case classes_1.ObjectType.CAMERA:
-                newContent = util_1.literal(Object.assign({}, content_1.CreateContentCam(config, piece), {
+                newContent = util_1.literal(Object.assign(Object.assign({}, content_1.CreateContentCam(config, piece)), {
                     type: tv_automation_sofie_blueprints_integration_1.SourceLayerType.CAMERA,
                     studioLabel: studio_1.getStudioName(config.context),
                     switcherInput: sources_1.GetInputValue(config.context, config.sourceConfig, piece.attributes[sources_1.Attributes.CAMERA])
@@ -4539,7 +4577,7 @@ function createSplit(config, pieces, sources, width, height) {
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
