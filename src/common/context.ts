@@ -3,6 +3,7 @@ import {
 	IBlueprintRundownDB,
 	ISegmentUserContext,
 	IShowStyleContext,
+	PackageInfo,
 } from '@sofie-automation/blueprints-integration'
 
 export function isPartContext(context: IShowStyleContext): context is PartContext {
@@ -24,6 +25,14 @@ export class PartContext implements ISegmentUserContext {
 
 		this.rundownId = baseContext.rundownId
 		this.rundown = baseContext.rundown
+	}
+
+	public get studioId(): string {
+		return this.baseContext.studioId
+	}
+
+	public getPackageInfo(packageId: string): Readonly<PackageInfo.Any[]> {
+		return this.baseContext.getPackageInfo(packageId)
 	}
 
 	public getRuntimeArguments(_externalId: string): undefined {

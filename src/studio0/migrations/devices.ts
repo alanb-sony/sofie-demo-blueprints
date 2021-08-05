@@ -258,7 +258,7 @@ export function ensureMakeReadyIsUpToDate(
 			const expected = getExpectedCommand(context, deviceId, cmdId)
 
 			if (dev && expected) {
-				const opts = dev.options as Partial<TSR.DeviceOptionsHTTPSend['options']>
+				const opts = dev.options as Partial<TSR.DeviceOptionsHTTPSend['options']> || {}
 				if (!opts.makeReadyCommands) {
 					opts.makeReadyCommands = []
 				}

@@ -1,5 +1,7 @@
-import { IStudioContext, TSR } from '@sofie-automation/blueprints-integration'
+import { BlueprintResultStudioBaseline, IStudioContext } from '@sofie-automation/blueprints-integration'
 
-export function getBaseline(_context: IStudioContext): TSR.TSRTimelineObjBase[] {
-	return []
+export function getBaseline(_context: IStudioContext): BlueprintResultStudioBaseline {
+	return {
+		timelineObjects: []
+	}
 }

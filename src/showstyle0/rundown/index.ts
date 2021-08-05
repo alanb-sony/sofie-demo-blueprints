@@ -27,7 +27,9 @@ export function getRundown(
 		rundown,
 		globalAdLibPieces: getGlobalAdlibs(context),
 		globalActions: [],
-		baseline: getBaseline(context),
+		baseline: {
+			timelineObjects: getBaseline(context),
+		},
 	}
 
 	if (ingestRundown.payload) {
