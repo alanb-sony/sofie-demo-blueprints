@@ -30,6 +30,7 @@ export interface SpreadsheetIngestPart {
 	// type: string
 	float: boolean
 	script: string
+	duration: number
 
 	pieces: SpreadsheetIngestPiece[]
 }
@@ -39,7 +40,7 @@ export interface SpreadsheetIngestPiece {
 	objectType: string
 	objectTime: number
 	duration: number
-	clipName: string
+	clipName: undefined
 	attributes: {
 		[key: string]: string
 	},

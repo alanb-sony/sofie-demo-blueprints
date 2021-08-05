@@ -13,9 +13,9 @@ export function parseCamera(ingestPart: SpreadsheetIngestPart): PartProps<Camera
 		return createInvalidProps(t('No camera object'), ingestPart)
 	}
 
-	const input = findSource(cameraPiece.attributes.name, AtemSourceType.Camera)
+	const input = findSource(cameraPiece.attributes.camNo, AtemSourceType.Camera)
 	if (!input) {
-		return createInvalidProps(t(`Could not find camera for input ${cameraPiece.attributes.name}`), ingestPart)
+		return createInvalidProps(t(`Could not find camera for input ${cameraPiece.attributes.camNo}`), ingestPart)
 	}
 
 	return {

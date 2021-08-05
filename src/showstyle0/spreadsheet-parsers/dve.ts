@@ -14,10 +14,10 @@ export function parseDVE(ingestPart: SpreadsheetIngestPart): PartProps<DVEProps 
 
 	ingestPart.pieces.forEach((p) => {
 		if (p.objectType === ObjectType.Camera) {
-			const source = findSource(p.attributes.name, AtemSourceType.Camera)
+			const source = findSource(p.attributes.camNo, AtemSourceType.Camera)
 			if (source) splitInputs.push(source)
 		} else if (p.objectType === ObjectType.Remote) {
-			const source = findSource(p.attributes.source, AtemSourceType.Remote)
+			const source = findSource(p.attributes.input, AtemSourceType.Remote)
 			if (source) splitInputs.push(source)
 		} else if (p.objectType === ObjectType.Video && !hasVideo) {
 			hasVideo = true

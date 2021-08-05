@@ -25,9 +25,15 @@ export function convertIngestData(context: IRundownUserContext, ingestSegment: I
 		const payload: SpreadsheetIngestSegment = ingestSegment.payload
 
 		if (payload.name.match(/intro/i)) type = SegmentType.OPENING
-
-		ingestSegment.parts.forEach((part) => {
+		
+		ingestSegment.parts.sort((a, b) => a.rank - b.rank).forEach((part) => {
+			context.logDebug(JSON.stringify(part, undefined, 2))
 			const partPayload: SpreadsheetIngestPart = part.payload
+
+			partPayload.pieces.forEach(p => {
+				if (p.objectTime) p.objectTime = p.objectTime * 1000
+				if (p.duration) p.duration = p.duration * 1000
+			})
 
 			if (partPayload.type.match(/cam/i)) {
 				parts.push(parseCamera(partPayload))

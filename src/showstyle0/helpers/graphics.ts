@@ -13,22 +13,22 @@ export interface GraphicsResult {
 }
 
 function getGraphicSourceLayer(object: GraphicObject): SourceLayer {
-	if (object.clipName.match(/ticker/i)) {
+	if (object.attributes.template.match(/ticker/i)) {
 		return SourceLayer.Ticker
-	} else if (object.clipName.match(/strap/i)) {
+	} else if (object.attributes.template.match(/strap/i)) {
 		return SourceLayer.Strap
-	} else if (object.clipName.match(/fullscreen/i)) {
+	} else if (object.attributes.template.match(/fullscreen/i)) {
 		return SourceLayer.GFX
 	} else {
 		return SourceLayer.LowerThird
 	}
 }
 function getGraphicTlLayer(object: GraphicObject): CasparCGLayers {
-	if (object.clipName.match(/ticker/i)) {
+	if (object.attributes.template.match(/ticker/i)) {
 		return CasparCGLayers.CasparCGGraphicsTicker
-	} else if (object.clipName.match(/strap/i)) {
+	} else if (object.attributes.template.match(/strap/i)) {
 		return CasparCGLayers.CasparCGGraphicsStrap
-	} else if (object.clipName.match(/fullscreen/i)) {
+	} else if (object.attributes.template.match(/fullscreen/i)) {
 		return CasparCGLayers.CasparCGClipPlayer
 	} else {
 		return CasparCGLayers.CasparCGGraphicsLowerThird
@@ -50,14 +50,14 @@ function getGraphicTlObject(config: StudioConfig, object: GraphicObject): TSR.TS
 				type: TSR.TimelineContentTypeCasparCg.TEMPLATE,
 
 				templateType: 'html',
-				name: object.clipName,
+				name: object.attributes.template,
 				data: {
 					...object.attributes,
 				},
 				useStopCommand: true,
 			},
 		}),
-		...(object.clipName.match(/fullscreen/i)
+		...(object.attributes.template.match(/fullscreen/i)
 			? createAtemInputTimelineObjects(fullscreenAtemInput?.input || 0, config.casparcgLatency)
 			: []),
 	]
@@ -67,7 +67,7 @@ function parseGraphic(config: StudioConfig, object: GraphicObject): IBlueprintPi
 
 	return {
 		externalId: object.id,
-		name: `${object.clipName} | ${Object.values(object.attributes)
+		name: `${object.attributes.template} | ${Object.values(object.attributes)
 			.filter((v) => v !== 'true' && v !== 'false')
 			.join(', ')}`, // todo - add info
 		lifespan: sourceLayer === SourceLayer.Ticker ? PieceLifespan.OutOnRundownEnd : PieceLifespan.WithinPart, // todo - infinite modes
@@ -85,13 +85,13 @@ function parseGraphic(config: StudioConfig, object: GraphicObject): IBlueprintPi
 				template: {
 					event: '',
 					layer: '',
-					name: object.clipName,
+					name: object.attributes.template,
 				},
 			},
 			previewRenderer: config.previewRenderer,
 		},
 		enable: {
-			start: object.objectTime,
+			start: object.objectTime || 0,
 			duration: object.duration > 0 ? object.duration : undefined,
 		},
 	}
@@ -99,7 +99,7 @@ function parseGraphic(config: StudioConfig, object: GraphicObject): IBlueprintPi
 function parseAdlibGraphic(config: StudioConfig, object: GraphicObject, index: number): IBlueprintAdLibPiece {
 	return {
 		externalId: object.id,
-		name: `${object.clipName} | ${Object.values(object.attributes)
+		name: `${object.attributes.template} | ${Object.values(object.attributes)
 			.filter((v) => v !== 'true' && v !== 'false')
 			.join(', ')}`, // todo - add info
 		lifespan: PieceLifespan.WithinPart, // todo - infinite modes
@@ -117,7 +117,7 @@ function parseAdlibGraphic(config: StudioConfig, object: GraphicObject, index: n
 				template: {
 					event: '',
 					layer: '',
-					name: object.clipName,
+					name: object.attributes.template,
 				},
 			},
 		},
@@ -130,7 +130,7 @@ export function parseGraphicsFromObjects(config: StudioConfig, objects: SomeObje
 	const graphicsObjects = objects.filter((o): o is GraphicObject => o.objectType === ObjectType.Graphic)
 
 	return {
-		pieces: graphicsObjects.filter((o) => !o.isAdlib).map((o) => parseGraphic(config, o)),
-		adLibPieces: graphicsObjects.filter((o) => !!o.isAdlib).map((o, i) => parseAdlibGraphic(config, o, i)),
+		pieces: graphicsObjects.filter((o) => o.objectTime !== undefined).map((o) => parseGraphic(config, o)),
+		adLibPieces: graphicsObjects.filter((o) => o.objectTime === undefined).map((o, i) => parseAdlibGraphic(config, o, i)),
 	}
 }

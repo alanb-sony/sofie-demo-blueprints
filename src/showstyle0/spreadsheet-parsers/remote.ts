@@ -13,9 +13,9 @@ export function parseRemote(ingestPart: SpreadsheetIngestPart): PartProps<Remote
 		return createInvalidProps(t('No remote input object'), ingestPart)
 	}
 
-	const input = findSource(remotePiece.attributes.source, AtemSourceType.Remote)
+	const input = findSource(remotePiece.attributes.input, AtemSourceType.Remote)
 	if (!input) {
-		return createInvalidProps(t(`Could not find remote source for input ${remotePiece.attributes.source}`), ingestPart)
+		return createInvalidProps(t(`Could not find remote source for input ${remotePiece.attributes.input}`), ingestPart)
 	}
 
 	return {

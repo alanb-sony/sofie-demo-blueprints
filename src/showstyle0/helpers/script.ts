@@ -21,7 +21,7 @@ function getLastWords(input: string): string {
 }
 
 export function createScriptPiece(script: string, extId: string): IBlueprintPiece | undefined {
-	if (script.trim() === '') return undefined
+	if (!script || script.trim() === '') return undefined
 
 	const firstWords = getFirstWords(script)
 	const lastWords = getLastWords(script)

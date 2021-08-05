@@ -37,7 +37,7 @@ export interface BaseObject extends SpreadsheetIngestPiece {
 export interface CameraObject extends BaseObject {
 	objectType: ObjectType.Camera
 	attributes: {
-		name: string
+		camNo: string
 	}
 }
 export interface VideoObject extends BaseObject {
@@ -47,8 +47,10 @@ export interface VideoObject extends BaseObject {
 export interface GraphicObject extends BaseObject {
 	objectType: ObjectType.Graphic
 	attributes: {
-		name: string
-		description: string // TODO - need to allow undefined here..
+		template: string
+		f0: string
+		f1: string
+		f2: string
 	}
 	adlibVariant?: string
 }
@@ -75,7 +77,7 @@ export interface TransitionObject extends BaseObject {
 export interface RemoteObject extends BaseObject {
 	objectType: ObjectType.Remote
 	attributes: {
-		source: string
+		input: string
 	}
 }
 export interface PipObject extends BaseObject {

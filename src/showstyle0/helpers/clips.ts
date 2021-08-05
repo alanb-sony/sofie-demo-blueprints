@@ -8,7 +8,7 @@ export interface ClipProps {
 
 export function parseClipProps(object: VideoObject): ClipProps {
 	return {
-		fileName: object.clipName,
+		fileName: object.attributes.fileName, // object.clipName,
 		duration: object.duration,
 	}
 }
